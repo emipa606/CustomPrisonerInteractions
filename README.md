@@ -1,0 +1,39 @@
+# CustomPrisonerInteractions
+
+![Image](https://i.imgur.com/buuPQel.png)
+
+
+Adds various extra options to the prisoner Interactions for Converting and Releasing prisoners.
+
+So I've previously made some different prisoner interraction-mods and since the total number of different options started getting out of hand I combined them into this mod. The original mods will stay around as long as anyone still wants to use them but this mod has the same features as the others combined plus some improvements.
+
+The original mods added extra prisoner interraction choices and since only the option for selecting ideology to convert to was visible when choosing the vanilla Convert-choice the process for selecting ideology for the custom convert-options was a bit difficult if you had colonies with multiple ideologies.
+This mod instead adds an option-button for the Convert and the Release-choice so all vanilla options regarding Ideology will also be visible.
+
+The other difference is that this mod enables you to select options per prisoner. So you can for example select to release a hurt prisoner without waiting for them to be healthy without changing any global options.
+There is also options in the mod-settings if you want to change what option is set by default.
+
+You can use this mod without owning Ideology, as it will still show for the release-option.
+
+If you have suggestions for more options, please leave a comment and Ill see if I can add them to the mod.
+
+![Image](https://i.imgur.com/O0IIlYj.png)
+
+Since modding is just a hobby for me I expect no donations to keep modding. If you still want to show your support you can gift me anything from my https://store.steampowered.com/wishlist/id/Mlie]Wishlist or buy me a cup of tea.
+
+https://ko-fi.com/G2G55DDYD]![Image](https://i.imgur.com/Utx6OIH.png)
+
+
+![Image](https://i.imgur.com/PwoNOj4.png)
+
+
+
+-  See if the the error persists if you just have this mod and its requirements active.
+-  If not, try adding your other mods until it happens again.
+-  Post your error-log using https://steamcommunity.com/workshop/filedetails/?id=818773962]HugsLib and command Ctrl+F12
+-  For best support, please use the Discord-channel for error-reporting.
+-  Do not report errors by making a discussion-thread, I get no notification of that.
+-  If you have the solution for a problem, please post it to the GitHub repository.
+
+
+
