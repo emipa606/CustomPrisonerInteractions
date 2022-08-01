@@ -13,9 +13,40 @@ This mod instead adds an option-button for the Convert and the Release-choice so
 The other difference is that this mod enables you to select options per prisoner. So you can for example select to release a hurt prisoner without waiting for them to be healthy without changing any global options.
 There is also options in the mod-settings if you want to change what option is set by default.
 
+The mod adds an option for Releasing prisoners: 
+Release when healthy - will wait to release the prisoner until they are considered healthy
+
+It also adds the following options for the Convert option
+
+
+- Recruit after
+- Lower resistance first
+- Lower resistance first, Recruit after
+- Enslave after
+- Lower will first
+- Lower will first, Enslave after
+- Release after
+- Lower resistance first, Release after
+
+
+
 You can use this mod without owning Ideology, as it will still show for the release-option.
 
 If you have suggestions for more options, please leave a comment and Ill see if I can add them to the mod.
+
+https://steamcommunity.com/sharedfiles/filedetails/?edit=true&id=2841412975]Chinese translation by Chiwei
+
+This mod replaces the following mods
+
+
+- https://steamcommunity.com/sharedfiles/filedetails/?id=2702584632]Convert Then Recruit
+- https://steamcommunity.com/sharedfiles/filedetails/?id=2705395014]Convert Then Enslave
+- https://steamcommunity.com/sharedfiles/filedetails/?id=2838846353]Convert Then Release
+- https://steamcommunity.com/sharedfiles/filedetails/?id=2506029522]Release When Healthy
+
+
+
+NOTICE: If any of your current prisoners have any of the custom interactions added by the above mods, please change these to the ”No action” setting before switching to this mod as the game will have trouble showing the prisoner tab if the selected saved action is missing. 
 
 ![Image](https://i.imgur.com/O0IIlYj.png)
 
