@@ -66,6 +66,10 @@ public static class WorkGiver_Warden_Convert_JobOnThing
             return;
         }
 
-        pawn2.guest.interactionMode = __state;
+        if (pawn2.guest.interactionMode == PrisonerInteractionModeDefOf.ReduceResistance ||
+            pawn2.guest.interactionMode == PrisonerInteractionModeDefOf.ReduceWill)
+        {
+            pawn2.guest.interactionMode = __state;
+        }
     }
 }

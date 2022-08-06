@@ -1,5 +1,8 @@
 # Changelog for CustomPrisonerInteractions
 
+1.3.2 - Should no longer recruit before other actions when warden has an inspiration.
+
+
 1.3.1 - Hurt prisoners that are not incapacitated and are set to release when healthy should now be brought food, thanks MaxIssaKitsune for the detailed report!
 
 

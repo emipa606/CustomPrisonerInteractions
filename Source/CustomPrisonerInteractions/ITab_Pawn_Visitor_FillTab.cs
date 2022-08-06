@@ -103,7 +103,7 @@ public class ITab_Pawn_Visitor_FillTab
 
     public static void Postfix(ref Vector2 ___size, Tuple<List<FloatMenuOption>, string> __state)
     {
-        if (__state == null)
+        if (__state == null || !__state.Item1.Any())
         {
             return;
         }
