@@ -19,6 +19,11 @@ public static class Pawn_IdeoTracker_IdeoConversionAttempt
             return;
         }
 
+        if (CustomPrisonerInteractions.pawnWithIdeologyCrisis?.Equals(___pawn) == true)
+        {
+            return;
+        }
+
         var extraInteractionsTracker = ___pawn.Map.GetExtraInteractionsTracker();
         if (extraInteractionsTracker == null || !extraInteractionsTracker.Has(___pawn))
         {

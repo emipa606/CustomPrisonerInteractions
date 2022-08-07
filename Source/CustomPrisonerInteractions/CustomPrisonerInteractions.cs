@@ -25,6 +25,8 @@ public static class CustomPrisonerInteractions
     private static readonly Dictionary<Map, ExtraInteractionsTracker> ExtraInteractionsTrackers =
         new Dictionary<Map, ExtraInteractionsTracker>();
 
+    public static Pawn pawnWithIdeologyCrisis = null;
+
     static CustomPrisonerInteractions()
     {
         var harmony = new Harmony("Mlie.CustomPrisonerInteractions");
