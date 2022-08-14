@@ -34,6 +34,7 @@ public static class Pawn_InteractionsTracker_TryInteractWith
             case CustomPrisonerInteractions.ExtraMode.ReduceResistance:
             case CustomPrisonerInteractions.ExtraMode.ReduceResistanceThenRecruit:
             case CustomPrisonerInteractions.ExtraMode.ReduceResistanceThenRelease:
+            case CustomPrisonerInteractions.ExtraMode.ReduceResistanceThenKill:
                 if (recipient.guest.resistance > 0)
                 {
                     recipient.guest.interactionMode = PrisonerInteractionModeDefOf.ReduceResistance;

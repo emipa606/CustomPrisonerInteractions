@@ -35,6 +35,7 @@ public static class WorkGiver_Warden_Chat_JobOnThing
             case CustomPrisonerInteractions.ExtraMode.ReduceResistance:
             case CustomPrisonerInteractions.ExtraMode.ReduceResistanceThenRecruit:
             case CustomPrisonerInteractions.ExtraMode.ReduceResistanceThenRelease:
+            case CustomPrisonerInteractions.ExtraMode.ReduceResistanceThenKill:
                 if (pawn2.guest.resistance > 0)
                 {
                     pawn2.guest.interactionMode = PrisonerInteractionModeDefOf.ReduceResistance;

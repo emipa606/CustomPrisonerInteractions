@@ -15,9 +15,11 @@ public static class CustomPrisonerInteractions
         Recruit,
         Release,
         Enslave,
+        Kill,
         ReduceResistanceThenRecruit,
         ReduceWillThenEnslave,
         ReduceResistanceThenRelease,
+        ReduceResistanceThenKill,
         ReduceResistance,
         ReduceWill
     }
@@ -76,6 +78,10 @@ public static class CustomPrisonerInteractions
                 return "CPI.reduceresistancefirst".Translate();
             case ExtraMode.ReduceWill:
                 return "CPI.reducewillfirst".Translate();
+            case ExtraMode.Kill:
+                return "CPI.thenkill".Translate();
+            case ExtraMode.ReduceResistanceThenKill:
+                return "CPI.reduceresistancefirstthenkill".Translate();
         }
 
         return "CPI.none".Translate();

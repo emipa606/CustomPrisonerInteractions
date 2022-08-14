@@ -45,6 +45,11 @@ public static class Pawn_IdeoTracker_IdeoConversionAttempt
                 ___pawn.guest.interactionMode = PrisonerInteractionModeDefOf.AttemptRecruit;
                 "CTRe.pawnconvertedrecruit".Translate(___pawn.NameFullColored);
                 break;
+            case CustomPrisonerInteractions.ExtraMode.ReduceResistanceThenKill:
+            case CustomPrisonerInteractions.ExtraMode.Kill:
+                ___pawn.guest.interactionMode = PrisonerInteractionModeDefOf.Execution;
+                "CTRe.pawnconvertedkill".Translate(___pawn.NameFullColored);
+                break;
             case CustomPrisonerInteractions.ExtraMode.Enslave:
             case CustomPrisonerInteractions.ExtraMode.ReduceWillThenEnslave:
                 ___pawn.guest.interactionMode = PrisonerInteractionModeDefOf.Enslave;

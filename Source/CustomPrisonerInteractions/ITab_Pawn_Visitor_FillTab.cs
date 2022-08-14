@@ -94,6 +94,16 @@ public class ITab_Pawn_Visitor_FillTab
                             ReduceResistanceThenRelease;
                     },
                     MenuOptionPriority.Default, null, null, 29f));
+                __state.Item1.Add(new FloatMenuOption(getExtraInterractionExplanation(Kill),
+                    delegate { extraInteractionsTracker[pawn] = Kill; },
+                    MenuOptionPriority.Default, null, null, 29f));
+                __state.Item1.Add(new FloatMenuOption(getExtraInterractionExplanation(ReduceResistanceThenKill),
+                    delegate
+                    {
+                        extraInteractionsTracker[pawn] =
+                            ReduceResistanceThenKill;
+                    },
+                    MenuOptionPriority.Default, null, null, 29f));
                 break;
             default:
                 extraInteractionsTracker[pawn] = None;

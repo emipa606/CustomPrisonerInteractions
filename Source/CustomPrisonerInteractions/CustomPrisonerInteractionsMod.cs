@@ -115,6 +115,12 @@ internal class CustomPrisonerInteractionsMod : Mod
                         MenuOptionPriority.Default, null, null, 29f),
                     new FloatMenuOption(getExtraInterractionExplanation(ReduceResistanceThenRelease),
                         delegate { Settings.DefaultConvertValue = ReduceResistanceThenRelease; },
+                        MenuOptionPriority.Default, null, null, 29f),
+                    new FloatMenuOption(getExtraInterractionExplanation(Kill),
+                        delegate { Settings.DefaultConvertValue = Kill; },
+                        MenuOptionPriority.Default, null, null, 29f),
+                    new FloatMenuOption(getExtraInterractionExplanation(ReduceResistanceThenKill),
+                        delegate { Settings.DefaultConvertValue = ReduceResistanceThenKill; },
                         MenuOptionPriority.Default, null, null, 29f)
                 };
                 Find.WindowStack.Add(new FloatMenu(list));

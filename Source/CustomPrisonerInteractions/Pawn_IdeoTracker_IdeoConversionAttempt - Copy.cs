@@ -48,6 +48,11 @@ public static class RitualOutcomeEffectWorker_Conversion_Apply
                 pawn.guest.interactionMode = PrisonerInteractionModeDefOf.AttemptRecruit;
                 "CTRe.pawnconvertedrecruit".Translate(pawn.NameFullColored);
                 break;
+            case CustomPrisonerInteractions.ExtraMode.ReduceResistanceThenKill:
+            case CustomPrisonerInteractions.ExtraMode.Kill:
+                pawn.guest.interactionMode = PrisonerInteractionModeDefOf.Execution;
+                "CTRe.pawnconvertedkill".Translate(pawn.NameFullColored);
+                break;
             case CustomPrisonerInteractions.ExtraMode.Enslave:
             case CustomPrisonerInteractions.ExtraMode.ReduceWillThenEnslave:
                 pawn.guest.interactionMode = PrisonerInteractionModeDefOf.Enslave;
