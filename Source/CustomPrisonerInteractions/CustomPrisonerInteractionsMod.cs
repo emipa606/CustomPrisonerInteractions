@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Mlie;
+using RimWorld;
 using UnityEngine;
 using Verse;
 using static CustomPrisonerInteractions.CustomPrisonerInteractions;
@@ -69,6 +71,23 @@ internal class CustomPrisonerInteractionsMod : Mod
     {
         var listing_Standard = new Listing_Standard();
         listing_Standard.Begin(rect);
+        listing_Standard.Gap();
+        listing_Standard.Label(
+            "CPI.defaultfornew".Translate(Settings.DefaultNewValue.LabelCap));
+        if (listing_Standard.ButtonText("CPI.change".Translate()))
+        {
+            var list = new List<FloatMenuOption>();
+            foreach (var interactionModeDef in DefDatabase<PrisonerInteractionModeDef>.AllDefsListForReading.OrderBy(
+                         def => def.listOrder))
+            {
+                list.Add(new FloatMenuOption(interactionModeDef.LabelCap,
+                    delegate { Settings.DefaultNewValue = interactionModeDef; },
+                    MenuOptionPriority.Default, null, null, 29f));
+            }
+
+            Find.WindowStack.Add(new FloatMenu(list));
+        }
+
         listing_Standard.Gap();
         listing_Standard.Label(
             "CPI.defaultrelease".Translate(getExtraInterractionExplanation(Settings.DefaultReleaseValue)));

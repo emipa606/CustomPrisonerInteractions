@@ -27,6 +27,8 @@ It also adds the following options for the Convert option
 - Lower will first, Enslave after
 - Release after
 - Lower resistance first, Release after
+- Execute after
+- Lower resistance first, Execute after
 
 
 
