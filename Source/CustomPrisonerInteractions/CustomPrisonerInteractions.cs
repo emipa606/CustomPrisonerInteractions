@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Reflection;
 using HarmonyLib;
+using RimWorld;
 using Verse;
 
 namespace CustomPrisonerInteractions;
@@ -33,6 +34,11 @@ public static class CustomPrisonerInteractions
     {
         var harmony = new Harmony("Mlie.CustomPrisonerInteractions");
         harmony.PatchAll(Assembly.GetExecutingAssembly());
+        if (CustomPrisonerInteractionsMod.instance.Settings.DefaultNewValue == null)
+        {
+            CustomPrisonerInteractionsMod.instance.Settings.DefaultNewValue =
+                PrisonerInteractionModeDefOf.NoInteraction;
+        }
     }
 
     internal static ExtraInteractionsTracker GetExtraInteractionsTracker(this Map map)
