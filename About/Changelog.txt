@@ -1,5 +1,8 @@
 # Changelog for CustomPrisonerInteractions
 
+1.4.2 - Updated german translation, thanks mezen!
+
+
 1.4.1 - Mod updated for 1.4 and passed autotests.
 Used DeepL to update translations for ChineseSimplified, French, German, Russian
 
