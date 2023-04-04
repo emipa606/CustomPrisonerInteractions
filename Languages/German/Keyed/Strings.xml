@@ -24,4 +24,6 @@
   <CPI.defaultconvert>Standardmäßige Konvertierungs-Aktion: {0}</CPI.defaultconvert>
   <CPI.defaultfornew>Standardaktion für neue Gefangene: {0}</CPI.defaultfornew>
   <CPI.version>Installierte Mod-Version: {0}</CPI.version>
+  <CPI.reduceresistancefirstthenbloodfeed>Vorher Widerstand reduzieren, nachher Blutzufuhr</CPI.reduceresistancefirstthenbloodfeed>
+  <CPI.reduceresistancefirstthenhemogenfarm>Widerstand vorher reduzieren, Hämogenfarm nachher</CPI.reduceresistancefirstthenhemogenfarm>
 </LanguageData>

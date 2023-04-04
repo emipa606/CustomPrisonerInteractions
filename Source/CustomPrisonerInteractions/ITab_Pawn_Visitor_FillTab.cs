@@ -56,6 +56,7 @@ public class ITab_Pawn_Visitor_FillTab
 
                 break;
             case "Convert":
+            case "PrisonLabor_workAndConvertOption":
                 if (currentExtraInterraction is ReleaseWhenHealthy)
                 {
                     extraInteractionsTracker[pawn] = None;
@@ -138,6 +139,7 @@ public class ITab_Pawn_Visitor_FillTab
                         CustomPrisonerInteractionsMod.instance.Settings.DefaultReleaseValue;
                     break;
                 case "Convert":
+                case "PrisonLabor_workAndConvertOption":
                     extraInteractionsTracker[pawn] =
                         CustomPrisonerInteractionsMod.instance.Settings.DefaultConvertValue;
                     break;

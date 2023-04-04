@@ -24,4 +24,6 @@
   <CPI.defaultconvert>Action de conversion par défaut : {0}</CPI.defaultconvert>
   <CPI.defaultfornew>Action par défaut pour les nouveaux prisonniers : {0}</CPI.defaultfornew>
   <CPI.version>Version installée du module : {0}</CPI.version>
+  <CPI.reduceresistancefirstthenbloodfeed>Réduire la résistance avant, alimenter en sang après</CPI.reduceresistancefirstthenbloodfeed>
+  <CPI.reduceresistancefirstthenhemogenfarm>Réduire la résistance avant, hémogéniser après</CPI.reduceresistancefirstthenhemogenfarm>
 </LanguageData>

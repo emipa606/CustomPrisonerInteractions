@@ -45,7 +45,8 @@ public static class Pawn_GuestTracker_CapturedBy
             return;
         }
 
-        if (__instance.interactionMode != PrisonerInteractionModeDefOf.Convert)
+        if (__instance.interactionMode != PrisonerInteractionModeDefOf.Convert &&
+            __instance.interactionMode.defName != "PrisonLabor_workAndConvertOption")
         {
             return;
         }

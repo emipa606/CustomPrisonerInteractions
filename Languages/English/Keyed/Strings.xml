@@ -5,6 +5,8 @@
   <CPI.reduceresistancefirst>Reduce resistance before</CPI.reduceresistancefirst>
   <CPI.reduceresistancefirstthenrecruit>Reduce resistance before, recruit after</CPI.reduceresistancefirstthenrecruit>
   <CPI.reduceresistancefirstthenkill>Reduce resistance before, execute after</CPI.reduceresistancefirstthenkill>
+  <CPI.reduceresistancefirstthenbloodfeed>Reduce resistance before, bloodfeed after</CPI.reduceresistancefirstthenbloodfeed>
+  <CPI.reduceresistancefirstthenhemogenfarm>Reduce resistance before, hemogen farm after</CPI.reduceresistancefirstthenhemogenfarm>
   <CPI.thenenslave>Enslave after</CPI.thenenslave>
   <CPI.thenkill>Execute after</CPI.thenkill>
   <CPI.reducewillfirst>Reduce will before</CPI.reducewillfirst>

@@ -24,4 +24,6 @@
   <CPI.defaultconvert>Действие преобразования по умолчанию: {0}</CPI.defaultconvert>
   <CPI.defaultfornew>Действие по умолчанию для новых заключенных: {0}</CPI.defaultfornew>
   <CPI.version>Установленная версия мода: {0}</CPI.version>
+  <CPI.reduceresistancefirstthenbloodfeed>Снижение сопротивления до, кровенаполнение после</CPI.reduceresistancefirstthenbloodfeed>
+  <CPI.reduceresistancefirstthenhemogenfarm>Снижение резистентности до, гемогенная ферма после</CPI.reduceresistancefirstthenhemogenfarm>
 </LanguageData>
