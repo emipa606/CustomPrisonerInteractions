@@ -25,6 +25,8 @@ public static class Pawn_GuestTracker_CanBeBroughtFood
             return;
         }
 
-        __result = extraInterractionsTracker[___pawn] == CustomPrisonerInteractions.ExtraMode.ReleaseWhenHealthy;
+        __result = extraInterractionsTracker[___pawn] is CustomPrisonerInteractions.ExtraMode.ReleaseWhenHealthy
+            or CustomPrisonerInteractions.ExtraMode.ReleaseWhenAbleToWalk
+            or CustomPrisonerInteractions.ExtraMode.ReleaseWhenNotGuilty;
     }
 }

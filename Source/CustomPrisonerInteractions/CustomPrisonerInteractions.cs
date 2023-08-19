@@ -22,7 +22,9 @@ public static class CustomPrisonerInteractions
         ReduceResistanceThenRelease,
         ReduceResistanceThenKill,
         ReduceResistance,
-        ReduceWill
+        ReduceWill,
+        ReleaseWhenAbleToWalk,
+        ReleaseWhenNotGuilty
     }
 
     private static readonly Dictionary<Map, ExtraInteractionsTracker> ExtraInteractionsTrackers =
@@ -66,6 +68,10 @@ public static class CustomPrisonerInteractions
     {
         switch (extraMode)
         {
+            case ExtraMode.ReleaseWhenNotGuilty:
+                return "CPI.releasewhennotguilty".Translate();
+            case ExtraMode.ReleaseWhenAbleToWalk:
+                return "CPI.releasewhenabletowalk".Translate();
             case ExtraMode.ReleaseWhenHealthy:
                 return "CPI.releasewhenhealthy".Translate();
             case ExtraMode.Recruit:

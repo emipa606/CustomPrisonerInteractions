@@ -27,7 +27,7 @@
     <li>Mlie.ConvertThenRelease</li>
     <li>Mlie.ReleaseWhenHealthy</li>
   </incompatibleWith>
-  <description>[img]https://i.imgur.com/buuPQel.png[/img]
+  <description>[img]https://i.imgur.com/iCj5o7O.png[/img]
 
 Adds various extra options to the prisoner Interactions for Converting and Releasing prisoners.
 
@@ -60,7 +60,8 @@ You can use this mod without owning Ideology, as it will still show for the rele
 
 If you have suggestions for more options, please leave a comment and Ill see if I can add them to the mod.
 
-[url=https://steamcommunity.com/sharedfiles/filedetails/?edit=true&amp;id=2841412975]Chinese translation[/url] by Chiwei
+- [url=https://steamcommunity.com/sharedfiles/filedetails/?edit=true&amp;id=2841412975]Chinese translation[/url] by Chiwei
+- Supports the work and convert action added by [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1899474310]Prison Labor[/url]
 
 This mod replaces the following mods
 [list]
@@ -83,12 +84,12 @@ NOTICE: If any of your current prisoners have any of the custom interactions add
     [/tr]
 [/table]
 
-[img]https://i.imgur.com/O0IIlYj.png[/img]
+[img]https://i.imgur.com/Ds0rBAD.png[/img]
 Since modding is just a hobby for me I expect no donations to keep modding. If you still want to show your support you can gift me anything from my [url=https://store.steampowered.com/wishlist/id/Mlie]Wishlist[/url] or buy me a cup of tea.
 
-[url=https://ko-fi.com/G2G55DDYD][img]https://i.imgur.com/Utx6OIH.png[/img][/url]
+[url=https://ko-fi.com/G2G55DDYD][img]https://i.imgur.com/VWG0yff.png[/img][/url]
 
-[img]https://i.imgur.com/PwoNOj4.png[/img]
+[img]https://i.imgur.com/5xwDG6H.png[/img]
 [list]
 [*] See if the the error persists if you just have this mod and its requirements active.
 [*] If not, try adding your other mods until it happens again.
@@ -97,6 +98,5 @@ Since modding is just a hobby for me I expect no donations to keep modding. If y
 [*] Do not report errors by making a discussion-thread, I get no notification of that.
 [*] If you have the solution for a problem, please post it to the GitHub repository.
 [/list]
-
-[url=https://steamcommunity.com/sharedfiles/filedetails/changelog/2841231775]Last updated 2023-04-04[/url]</description>
+[url=https://steamcommunity.com/sharedfiles/filedetails/changelog/2841231775]Last updated 2023-08-19[/url]</description>
 </ModMetaData>

@@ -26,4 +26,6 @@
   <CPI.version>Installierte Mod-Version: {0}</CPI.version>
   <CPI.reduceresistancefirstthenbloodfeed>Vorher Widerstand reduzieren, nachher Blutzufuhr</CPI.reduceresistancefirstthenbloodfeed>
   <CPI.reduceresistancefirstthenhemogenfarm>Widerstand vorher reduzieren, Hämogenfarm nachher</CPI.reduceresistancefirstthenhemogenfarm>
+  <CPI.releasewhenabletowalk>Nur wenn sie gehen können</CPI.releasewhenabletowalk>
+  <CPI.releasewhennotguilty>Nur wenn sie nicht mehr schuldig sind</CPI.releasewhennotguilty>
 </LanguageData>

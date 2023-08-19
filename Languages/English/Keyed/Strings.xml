@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
   <CPI.releasewhenhealthy>Only when healthy</CPI.releasewhenhealthy>
+  <CPI.releasewhenabletowalk>Only when able to walk</CPI.releasewhenabletowalk>
+  <CPI.releasewhennotguilty>Only when no longer guilty</CPI.releasewhennotguilty>
   <CPI.thenrecruit>Recruit after</CPI.thenrecruit>
   <CPI.reduceresistancefirst>Reduce resistance before</CPI.reduceresistancefirst>
   <CPI.reduceresistancefirstthenrecruit>Reduce resistance before, recruit after</CPI.reduceresistancefirstthenrecruit>

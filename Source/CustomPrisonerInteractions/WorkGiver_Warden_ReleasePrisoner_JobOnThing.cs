@@ -27,7 +27,9 @@ public static class WorkGiver_Warden_ReleasePrisoner_JobOnThing
             return true;
         }
 
-        if (extraInteractionsTracker[pawn2] != CustomPrisonerInteractions.ExtraMode.ReleaseWhenHealthy)
+        if (extraInteractionsTracker[pawn2] is not CustomPrisonerInteractions.ExtraMode.ReleaseWhenHealthy
+            and not CustomPrisonerInteractions.ExtraMode.ReleaseWhenAbleToWalk
+            and not CustomPrisonerInteractions.ExtraMode.ReleaseWhenNotGuilty)
         {
             return true;
         }
@@ -37,6 +39,18 @@ public static class WorkGiver_Warden_ReleasePrisoner_JobOnThing
             return true;
         }
 
-        return !HealthAIUtility.ShouldSeekMedicalRest(pawn2);
+        if (extraInteractionsTracker[pawn2] is CustomPrisonerInteractions.ExtraMode.ReleaseWhenHealthy &&
+            !HealthAIUtility.ShouldSeekMedicalRest(pawn2))
+        {
+            return true;
+        }
+
+        if (extraInteractionsTracker[pawn2] is CustomPrisonerInteractions.ExtraMode.ReleaseWhenAbleToWalk &&
+            !pawn2.Downed)
+        {
+            return true;
+        }
+
+        return pawn2.guilt is not { IsGuilty: true };
     }
 }

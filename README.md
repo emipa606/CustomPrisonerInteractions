@@ -1,6 +1,6 @@
 # CustomPrisonerInteractions
 
-![Image](https://i.imgur.com/buuPQel.png)
+![Image](https://i.imgur.com/iCj5o7O.png)
 
 
 Adds various extra options to the prisoner Interactions for Converting and Releasing prisoners.
@@ -36,7 +36,8 @@ You can use this mod without owning Ideology, as it will still show for the rele
 
 If you have suggestions for more options, please leave a comment and Ill see if I can add them to the mod.
 
-https://steamcommunity.com/sharedfiles/filedetails/?edit=true&id=2841412975]Chinese translation by Chiwei
+- https://steamcommunity.com/sharedfiles/filedetails/?edit=true&id=2841412975]Chinese translation by Chiwei
+- Supports the work and convert action added by https://steamcommunity.com/sharedfiles/filedetails/?id=1899474310]Prison Labor
 
 This mod replaces the following mods
 
@@ -50,14 +51,14 @@ This mod replaces the following mods
 
 NOTICE: If any of your current prisoners have any of the custom interactions added by the above mods, please change these to the ”No action” setting before switching to this mod as the game will have trouble showing the prisoner tab if the selected saved action is missing. 
 
-![Image](https://i.imgur.com/O0IIlYj.png)
+![Image](https://i.imgur.com/Ds0rBAD.png)
 
 Since modding is just a hobby for me I expect no donations to keep modding. If you still want to show your support you can gift me anything from my https://store.steampowered.com/wishlist/id/Mlie]Wishlist or buy me a cup of tea.
 
-https://ko-fi.com/G2G55DDYD]![Image](https://i.imgur.com/Utx6OIH.png)
+https://ko-fi.com/G2G55DDYD]![Image](https://i.imgur.com/VWG0yff.png)
 
 
-![Image](https://i.imgur.com/PwoNOj4.png)
+![Image](https://i.imgur.com/5xwDG6H.png)
 
 
 
@@ -69,5 +70,4 @@ https://ko-fi.com/G2G55DDYD]![Image](https://i.imgur.com/Utx6OIH.png)
 -  If you have the solution for a problem, please post it to the GitHub repository.
 
 
-
-https://steamcommunity.com/sharedfiles/filedetails/changelog/2841231775]Last updated 2023-04-04
+https://steamcommunity.com/sharedfiles/filedetails/changelog/2841231775]Last updated 2023-08-19

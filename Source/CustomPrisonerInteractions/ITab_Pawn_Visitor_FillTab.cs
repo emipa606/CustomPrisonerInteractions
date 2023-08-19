@@ -44,12 +44,18 @@ public class ITab_Pawn_Visitor_FillTab
         switch (pawn.guest.interactionMode.defName)
         {
             case "Release":
-                if (currentExtraInterraction is not (ReleaseWhenHealthy
+                if (currentExtraInterraction is not (ReleaseWhenHealthy or ReleaseWhenAbleToWalk or ReleaseWhenNotGuilty
                     or None))
                 {
                     extraInteractionsTracker[pawn] = None;
                 }
 
+                __state.Item1.Add(new FloatMenuOption(getExtraInterractionExplanation(ReleaseWhenNotGuilty),
+                    delegate { extraInteractionsTracker[pawn] = ReleaseWhenNotGuilty; },
+                    MenuOptionPriority.Default, null, null, 29f));
+                __state.Item1.Add(new FloatMenuOption(getExtraInterractionExplanation(ReleaseWhenAbleToWalk),
+                    delegate { extraInteractionsTracker[pawn] = ReleaseWhenAbleToWalk; },
+                    MenuOptionPriority.Default, null, null, 29f));
                 __state.Item1.Add(new FloatMenuOption(getExtraInterractionExplanation(ReleaseWhenHealthy),
                     delegate { extraInteractionsTracker[pawn] = ReleaseWhenHealthy; },
                     MenuOptionPriority.Default, null, null, 29f));
@@ -57,7 +63,7 @@ public class ITab_Pawn_Visitor_FillTab
                 break;
             case "Convert":
             case "PrisonLabor_workAndConvertOption":
-                if (currentExtraInterraction is ReleaseWhenHealthy)
+                if (currentExtraInterraction is ReleaseWhenHealthy or ReleaseWhenAbleToWalk or ReleaseWhenNotGuilty)
                 {
                     extraInteractionsTracker[pawn] = None;
                 }

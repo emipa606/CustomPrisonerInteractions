@@ -4,8 +4,6 @@ using Mlie;
 using RimWorld;
 using UnityEngine;
 using Verse;
-using static CustomPrisonerInteractions.CustomPrisonerInteractions;
-using static CustomPrisonerInteractions.CustomPrisonerInteractions.ExtraMode;
 
 namespace CustomPrisonerInteractions;
 
@@ -32,9 +30,9 @@ internal class CustomPrisonerInteractionsMod : Mod
     {
         instance = this;
         currentVersion =
-            VersionFromManifest.GetVersionFromModMetaData(
-                ModLister.GetActiveModWithIdentifier("Mlie.CustomPrisonerInteractions"));
+            VersionFromManifest.GetVersionFromModMetaData(content.ModMetaData);
     }
+
 
     /// <summary>
     ///     The instance-settings for the mod
@@ -90,16 +88,40 @@ internal class CustomPrisonerInteractionsMod : Mod
 
         listing_Standard.Gap();
         listing_Standard.Label(
-            "CPI.defaultrelease".Translate(getExtraInterractionExplanation(Settings.DefaultReleaseValue)));
+            "CPI.defaultrelease".Translate(
+                CustomPrisonerInteractions.getExtraInterractionExplanation(Settings.DefaultReleaseValue)));
         if (listing_Standard.ButtonText("CPI.change".Translate()))
         {
             var list = new List<FloatMenuOption>
             {
-                new FloatMenuOption(getExtraInterractionExplanation(None),
-                    delegate { Settings.DefaultReleaseValue = None; },
+                new FloatMenuOption(
+                    CustomPrisonerInteractions.getExtraInterractionExplanation(
+                        CustomPrisonerInteractions.ExtraMode.None),
+                    delegate { Settings.DefaultReleaseValue = CustomPrisonerInteractions.ExtraMode.None; },
                     MenuOptionPriority.Default, null, null, 29f),
-                new FloatMenuOption(getExtraInterractionExplanation(ReleaseWhenHealthy),
-                    delegate { Settings.DefaultReleaseValue = ReleaseWhenHealthy; },
+                new FloatMenuOption(
+                    CustomPrisonerInteractions.getExtraInterractionExplanation(CustomPrisonerInteractions.ExtraMode
+                        .ReleaseWhenNotGuilty),
+                    delegate
+                    {
+                        Settings.DefaultReleaseValue = CustomPrisonerInteractions.ExtraMode.ReleaseWhenNotGuilty;
+                    },
+                    MenuOptionPriority.Default, null, null, 29f),
+                new FloatMenuOption(
+                    CustomPrisonerInteractions.getExtraInterractionExplanation(CustomPrisonerInteractions.ExtraMode
+                        .ReleaseWhenAbleToWalk),
+                    delegate
+                    {
+                        Settings.DefaultReleaseValue = CustomPrisonerInteractions.ExtraMode.ReleaseWhenAbleToWalk;
+                    },
+                    MenuOptionPriority.Default, null, null, 29f),
+                new FloatMenuOption(
+                    CustomPrisonerInteractions.getExtraInterractionExplanation(CustomPrisonerInteractions.ExtraMode
+                        .ReleaseWhenHealthy),
+                    delegate
+                    {
+                        Settings.DefaultReleaseValue = CustomPrisonerInteractions.ExtraMode.ReleaseWhenHealthy;
+                    },
                     MenuOptionPriority.Default, null, null, 29f)
             };
             Find.WindowStack.Add(new FloatMenu(list));
@@ -109,37 +131,71 @@ internal class CustomPrisonerInteractionsMod : Mod
         if (ModLister.IdeologyInstalled)
         {
             listing_Standard.Label(
-                "CPI.defaultconvert".Translate(getExtraInterractionExplanation(Settings.DefaultConvertValue)));
+                "CPI.defaultconvert".Translate(
+                    CustomPrisonerInteractions.getExtraInterractionExplanation(Settings.DefaultConvertValue)));
             if (listing_Standard.ButtonText("CPI.change".Translate()))
             {
                 var list = new List<FloatMenuOption>
                 {
-                    new FloatMenuOption(getExtraInterractionExplanation(None),
-                        delegate { Settings.DefaultConvertValue = None; },
+                    new FloatMenuOption(
+                        CustomPrisonerInteractions.getExtraInterractionExplanation(CustomPrisonerInteractions.ExtraMode
+                            .None),
+                        delegate { Settings.DefaultConvertValue = CustomPrisonerInteractions.ExtraMode.None; },
                         MenuOptionPriority.Default, null, null, 29f),
-                    new FloatMenuOption(getExtraInterractionExplanation(Recruit),
-                        delegate { Settings.DefaultConvertValue = Recruit; },
+                    new FloatMenuOption(
+                        CustomPrisonerInteractions.getExtraInterractionExplanation(CustomPrisonerInteractions.ExtraMode
+                            .Recruit),
+                        delegate { Settings.DefaultConvertValue = CustomPrisonerInteractions.ExtraMode.Recruit; },
                         MenuOptionPriority.Default, null, null, 29f),
-                    new FloatMenuOption(getExtraInterractionExplanation(ReduceResistanceThenRecruit),
-                        delegate { Settings.DefaultConvertValue = ReduceResistanceThenRecruit; },
+                    new FloatMenuOption(
+                        CustomPrisonerInteractions.getExtraInterractionExplanation(CustomPrisonerInteractions.ExtraMode
+                            .ReduceResistanceThenRecruit),
+                        delegate
+                        {
+                            Settings.DefaultConvertValue =
+                                CustomPrisonerInteractions.ExtraMode.ReduceResistanceThenRecruit;
+                        },
                         MenuOptionPriority.Default, null, null, 29f),
-                    new FloatMenuOption(getExtraInterractionExplanation(Enslave),
-                        delegate { Settings.DefaultConvertValue = Enslave; },
+                    new FloatMenuOption(
+                        CustomPrisonerInteractions.getExtraInterractionExplanation(CustomPrisonerInteractions.ExtraMode
+                            .Enslave),
+                        delegate { Settings.DefaultConvertValue = CustomPrisonerInteractions.ExtraMode.Enslave; },
                         MenuOptionPriority.Default, null, null, 29f),
-                    new FloatMenuOption(getExtraInterractionExplanation(ReduceWillThenEnslave),
-                        delegate { Settings.DefaultConvertValue = ReduceWillThenEnslave; },
+                    new FloatMenuOption(
+                        CustomPrisonerInteractions.getExtraInterractionExplanation(CustomPrisonerInteractions.ExtraMode
+                            .ReduceWillThenEnslave),
+                        delegate
+                        {
+                            Settings.DefaultConvertValue = CustomPrisonerInteractions.ExtraMode.ReduceWillThenEnslave;
+                        },
                         MenuOptionPriority.Default, null, null, 29f),
-                    new FloatMenuOption(getExtraInterractionExplanation(Release),
-                        delegate { Settings.DefaultConvertValue = Release; },
+                    new FloatMenuOption(
+                        CustomPrisonerInteractions.getExtraInterractionExplanation(CustomPrisonerInteractions.ExtraMode
+                            .Release),
+                        delegate { Settings.DefaultConvertValue = CustomPrisonerInteractions.ExtraMode.Release; },
                         MenuOptionPriority.Default, null, null, 29f),
-                    new FloatMenuOption(getExtraInterractionExplanation(ReduceResistanceThenRelease),
-                        delegate { Settings.DefaultConvertValue = ReduceResistanceThenRelease; },
+                    new FloatMenuOption(
+                        CustomPrisonerInteractions.getExtraInterractionExplanation(CustomPrisonerInteractions.ExtraMode
+                            .ReduceResistanceThenRelease),
+                        delegate
+                        {
+                            Settings.DefaultConvertValue =
+                                CustomPrisonerInteractions.ExtraMode.ReduceResistanceThenRelease;
+                        },
                         MenuOptionPriority.Default, null, null, 29f),
-                    new FloatMenuOption(getExtraInterractionExplanation(Kill),
-                        delegate { Settings.DefaultConvertValue = Kill; },
+                    new FloatMenuOption(
+                        CustomPrisonerInteractions.getExtraInterractionExplanation(CustomPrisonerInteractions.ExtraMode
+                            .Kill),
+                        delegate { Settings.DefaultConvertValue = CustomPrisonerInteractions.ExtraMode.Kill; },
                         MenuOptionPriority.Default, null, null, 29f),
-                    new FloatMenuOption(getExtraInterractionExplanation(ReduceResistanceThenKill),
-                        delegate { Settings.DefaultConvertValue = ReduceResistanceThenKill; },
+                    new FloatMenuOption(
+                        CustomPrisonerInteractions.getExtraInterractionExplanation(CustomPrisonerInteractions.ExtraMode
+                            .ReduceResistanceThenKill),
+                        delegate
+                        {
+                            Settings.DefaultConvertValue =
+                                CustomPrisonerInteractions.ExtraMode.ReduceResistanceThenKill;
+                        },
                         MenuOptionPriority.Default, null, null, 29f)
                 };
                 Find.WindowStack.Add(new FloatMenu(list));

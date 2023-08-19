@@ -26,4 +26,6 @@
   <CPI.version>Установленная версия мода: {0}</CPI.version>
   <CPI.reduceresistancefirstthenbloodfeed>Снижение сопротивления до, кровенаполнение после</CPI.reduceresistancefirstthenbloodfeed>
   <CPI.reduceresistancefirstthenhemogenfarm>Снижение резистентности до, гемогенная ферма после</CPI.reduceresistancefirstthenhemogenfarm>
+  <CPI.releasewhenabletowalk>Только в состоянии ходить</CPI.releasewhenabletowalk>
+  <CPI.releasewhennotguilty>Только если больше не виновен</CPI.releasewhennotguilty>
 </LanguageData>

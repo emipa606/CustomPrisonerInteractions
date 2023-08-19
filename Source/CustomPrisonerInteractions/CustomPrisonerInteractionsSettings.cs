@@ -9,7 +9,7 @@ namespace CustomPrisonerInteractions;
 internal class CustomPrisonerInteractionsSettings : ModSettings
 {
     public CustomPrisonerInteractions.ExtraMode DefaultConvertValue;
-    public PrisonerInteractionModeDef DefaultNewValue = PrisonerInteractionModeDefOf.NoInteraction;
+    public PrisonerInteractionModeDef DefaultNewValue;
     public CustomPrisonerInteractions.ExtraMode DefaultReleaseValue;
 
     /// <summary>

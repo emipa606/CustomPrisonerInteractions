@@ -26,4 +26,6 @@
   <CPI.version>已安装的mod-version。{0}</CPI.version>
   <CPI.reduceresistancefirstthenbloodfeed>之前减少阻力，之后补血</CPI.reduceresistancefirstthenbloodfeed>
   <CPI.reduceresistancefirstthenhemogenfarm>之前减少阻力，之后减少血源农场</CPI.reduceresistancefirstthenhemogenfarm>
+  <CPI.releasewhenabletowalk>只能行走</CPI.releasewhenabletowalk>
+  <CPI.releasewhennotguilty>只有当不再有罪时</CPI.releasewhennotguilty>
 </LanguageData>
