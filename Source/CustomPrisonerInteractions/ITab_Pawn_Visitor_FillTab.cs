@@ -25,7 +25,7 @@ public class ITab_Pawn_Visitor_FillTab
             return;
         }
 
-        __state = new Tuple<List<FloatMenuOption>, string>(new List<FloatMenuOption>(),
+        __state = new Tuple<List<FloatMenuOption>, string>([],
             pawn.guest.interactionMode.defName);
 
         var extraInteractionsTracker = pawn.Map.GetExtraInteractionsTracker();
@@ -34,7 +34,7 @@ public class ITab_Pawn_Visitor_FillTab
             return;
         }
 
-        var currentExtraInterraction = None;
+        var currentExtraInterraction = Undefined;
 
         if (extraInteractionsTracker.Has(pawn))
         {
@@ -45,9 +45,9 @@ public class ITab_Pawn_Visitor_FillTab
         {
             case "Release":
                 if (currentExtraInterraction is not (ReleaseWhenHealthy or ReleaseWhenAbleToWalk or ReleaseWhenNotGuilty
-                    or None))
+                    ))
                 {
-                    extraInteractionsTracker[pawn] = None;
+                    extraInteractionsTracker[pawn] = Undefined;
                 }
 
                 __state.Item1.Add(new FloatMenuOption(getExtraInterractionExplanation(ReleaseWhenNotGuilty),
@@ -65,7 +65,7 @@ public class ITab_Pawn_Visitor_FillTab
             case "PrisonLabor_workAndConvertOption":
                 if (currentExtraInterraction is ReleaseWhenHealthy or ReleaseWhenAbleToWalk or ReleaseWhenNotGuilty)
                 {
-                    extraInteractionsTracker[pawn] = None;
+                    extraInteractionsTracker[pawn] = Undefined;
                 }
 
                 __state.Item1.Add(new FloatMenuOption(getExtraInterractionExplanation(Recruit),
@@ -113,7 +113,7 @@ public class ITab_Pawn_Visitor_FillTab
                     MenuOptionPriority.Default, null, null, 29f));
                 break;
             default:
-                extraInteractionsTracker[pawn] = None;
+                extraInteractionsTracker[pawn] = Undefined;
                 break;
         }
     }
@@ -136,7 +136,8 @@ public class ITab_Pawn_Visitor_FillTab
             return;
         }
 
-        if (__state.Item2 != pawn.guest.interactionMode.defName)
+        if (__state.Item2 != pawn.guest.interactionMode.defName && !extraInteractionsTracker.Has(pawn) ||
+            extraInteractionsTracker[pawn] == Undefined)
         {
             switch (pawn.guest.interactionMode.defName)
             {
@@ -163,7 +164,7 @@ public class ITab_Pawn_Visitor_FillTab
 
         Widgets.Label(buttonArea, "CPI.options".Translate());
 
-        var currentExtraInterraction = None;
+        var currentExtraInterraction = Undefined;
 
         if (extraInteractionsTracker.Has(pawn))
         {

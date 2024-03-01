@@ -11,6 +11,7 @@ public static class CustomPrisonerInteractions
 {
     public enum ExtraMode
     {
+        Undefined,
         None,
         ReleaseWhenHealthy,
         Recruit,
@@ -52,13 +53,13 @@ public static class CustomPrisonerInteractions
 
         ExtraInteractionsTracker value;
 
-        if (!ExtraInteractionsTrackers.ContainsKey(map))
+        if (!ExtraInteractionsTrackers.TryGetValue(map, out var tracker))
         {
             value = ExtraInteractionsTrackers[map] = map.GetComponent<ExtraInteractionsTracker>();
         }
         else
         {
-            value = ExtraInteractionsTrackers[map];
+            value = tracker;
         }
 
         return value;

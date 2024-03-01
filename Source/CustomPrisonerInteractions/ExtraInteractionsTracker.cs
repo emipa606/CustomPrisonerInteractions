@@ -3,17 +3,13 @@ using Verse;
 
 namespace CustomPrisonerInteractions;
 
-public class ExtraInteractionsTracker : MapComponent
+public class ExtraInteractionsTracker(Map map) : MapComponent(map)
 {
     private Dictionary<Pawn, CustomPrisonerInteractions.ExtraMode> extraInteractions =
         new Dictionary<Pawn, CustomPrisonerInteractions.ExtraMode>();
 
     private List<Pawn> extraInteractionsKeys;
     private List<CustomPrisonerInteractions.ExtraMode> extraInteractionsValues;
-
-    public ExtraInteractionsTracker(Map map) : base(map)
-    {
-    }
 
     public CustomPrisonerInteractions.ExtraMode this[Pawn prisoner]
     {

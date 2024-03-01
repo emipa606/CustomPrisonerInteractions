@@ -13,8 +13,13 @@ This mod instead adds an option-button for the Convert and the Release-choice so
 The other difference is that this mod enables you to select options per prisoner. So you can for example select to release a hurt prisoner without waiting for them to be healthy without changing any global options.
 There is also options in the mod-settings if you want to change what option is set by default.
 
-The mod adds an option for Releasing prisoners: 
-Release when healthy - will wait to release the prisoner until they are considered healthy
+The mod adds these options for Releasing prisoners: 
+[litst]
+- When healthy - wait until they are considered healthy
+- When able to walk- wait until they can walk again
+- When no longer guilty- wait until they are no longer considered guilty for a crime
+
+
 
 It also adds the following options for the Convert option
 
@@ -51,6 +56,21 @@ This mod replaces the following mods
 
 NOTICE: If any of your current prisoners have any of the custom interactions added by the above mods, please change these to the ”No action” setting before switching to this mod as the game will have trouble showing the prisoner tab if the selected saved action is missing. 
 
+[table]
+	[tr]
+		[td]https://dsc.gg/mlie]![Image](https://i.imgur.com/zdzzBrc.png)
+[/td]
+		[td]https://github.com/emipa606/CustomPrisonerInteractions]![Image](https://i.imgur.com/kTkpTOE.png)
+[/td]
+    [/tr]
+    [tr]
+        [td]![Image](https://i.imgur.com/WjDSfUn.png)
+[/td]
+        [td]![Image](https://i.imgur.com/h5VwTNL.png)
+[/td]
+    [/tr]
+[/table]
+
 ![Image](https://i.imgur.com/Ds0rBAD.png)
 
 Since modding is just a hobby for me I expect no donations to keep modding. If you still want to show your support you can gift me anything from my https://store.steampowered.com/wishlist/id/Mlie]Wishlist or buy me a cup of tea.
@@ -64,10 +84,12 @@ https://ko-fi.com/G2G55DDYD]![Image](https://i.imgur.com/VWG0yff.png)
 
 -  See if the the error persists if you just have this mod and its requirements active.
 -  If not, try adding your other mods until it happens again.
--  Post your error-log using https://steamcommunity.com/workshop/filedetails/?id=818773962]HugsLib and command Ctrl+F12
+-  Post your error-log using https://steamcommunity.com/workshop/filedetails/?id=818773962]HugsLib or the standalone https://steamcommunity.com/sharedfiles/filedetails/?id=2873415404]Uploader and command Ctrl+F12
 -  For best support, please use the Discord-channel for error-reporting.
 -  Do not report errors by making a discussion-thread, I get no notification of that.
 -  If you have the solution for a problem, please post it to the GitHub repository.
 
 
-https://steamcommunity.com/sharedfiles/filedetails/changelog/2841231775]Last updated 2023-08-19
+
+https://steamcommunity.com/sharedfiles/filedetails/changelog/2841231775]![Image](https://img.shields.io/github/v/release/emipa606/CustomPrisonerInteractions?label=latest%20version&style=plastic&labelColor=0070cd&color=white)
+
