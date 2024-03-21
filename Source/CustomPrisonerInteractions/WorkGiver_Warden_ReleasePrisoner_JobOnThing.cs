@@ -34,7 +34,7 @@ public static class WorkGiver_Warden_ReleasePrisoner_JobOnThing
             return true;
         }
 
-        if (pawn2.guest.interactionMode != PrisonerInteractionModeDefOf.Release)
+        if (pawn2.guest.ExclusiveInteractionMode != PrisonerInteractionModeDefOf.Release)
         {
             return true;
         }

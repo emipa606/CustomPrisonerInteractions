@@ -28,6 +28,8 @@ public static class CustomPrisonerInteractions
         ReleaseWhenNotGuilty
     }
 
+    public static readonly FieldInfo InteractionModeField;
+
     private static readonly Dictionary<Map, ExtraInteractionsTracker> ExtraInteractionsTrackers =
         new Dictionary<Map, ExtraInteractionsTracker>();
 
@@ -36,12 +38,104 @@ public static class CustomPrisonerInteractions
     static CustomPrisonerInteractions()
     {
         var harmony = new Harmony("Mlie.CustomPrisonerInteractions");
+        InteractionModeField = AccessTools.Field(typeof(Pawn_GuestTracker), "interactionMode");
         harmony.PatchAll(Assembly.GetExecutingAssembly());
         if (CustomPrisonerInteractionsMod.instance.Settings.DefaultNewValue == null)
         {
             CustomPrisonerInteractionsMod.instance.Settings.DefaultNewValue =
-                PrisonerInteractionModeDefOf.NoInteraction;
+                PrisonerInteractionModeDefOf.MaintainOnly;
         }
+    }
+
+    private static bool ColonyHasAnyBloodfeeder(Map map)
+    {
+        if (!ModsConfig.BiotechActive)
+        {
+            return false;
+        }
+
+        foreach (var item in map.mapPawns.FreeColonistsAndPrisonersSpawned)
+        {
+            if (item.IsBloodfeeder())
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private static bool IsStudiable(Pawn pawn)
+    {
+        if (!ModsConfig.AnomalyActive)
+        {
+            return false;
+        }
+
+        if (!pawn.TryGetComp<CompStudiable>(out var comp) || !comp.EverStudiable())
+        {
+            return false;
+        }
+
+        if (pawn.kindDef.studiableAsPrisoner)
+        {
+            return !pawn.everBrainWiped;
+        }
+
+        return false;
+    }
+
+    public static bool CanUseExtraMode(Pawn pawn, ExtraMode mode)
+    {
+        if (!pawn.guest.Recruitable && mode is ExtraMode.Recruit or ExtraMode.ReduceResistanceThenRecruit)
+        {
+            return false;
+        }
+
+        return !pawn.IsWildMan() || mode is not (ExtraMode.Recruit or ExtraMode.ReduceResistanceThenRecruit
+            or ExtraMode.ReduceResistance or ExtraMode.ReduceResistanceThenKill
+            or ExtraMode.ReduceResistanceThenRelease);
+    }
+
+    public static bool CanUsePrisonerInteractionMode(Pawn pawn, PrisonerInteractionModeDef mode)
+    {
+        if (!pawn.guest.Recruitable && mode.hideIfNotRecruitable)
+        {
+            return false;
+        }
+
+        if (pawn.IsWildMan() && !mode.allowOnWildMan)
+        {
+            return false;
+        }
+
+        if (mode.hideIfNoBloodfeeders && pawn.MapHeld != null && !ColonyHasAnyBloodfeeder(pawn.MapHeld))
+        {
+            return false;
+        }
+
+        if (mode.hideOnHemogenicPawns && ModsConfig.BiotechActive && pawn.genes != null &&
+            pawn.genes.HasGene(GeneDefOf.Hemogenic))
+        {
+            return false;
+        }
+
+        if (!mode.allowInClassicIdeoMode && Find.IdeoManager.classicMode)
+        {
+            return false;
+        }
+
+        if (!ModsConfig.AnomalyActive)
+        {
+            return true;
+        }
+
+        if (mode.hideIfNotStudiableAsPrisoner && !IsStudiable(pawn))
+        {
+            return false;
+        }
+
+        return !mode.hideIfGrayFleshNotAppeared || Find.Anomaly.hasSeenGrayFlesh;
     }
 
     internal static ExtraInteractionsTracker GetExtraInteractionsTracker(this Map map)

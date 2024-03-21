@@ -36,23 +36,31 @@ public static class Pawn_IdeoTracker_IdeoConversionAttempt
         {
             case CustomPrisonerInteractions.ExtraMode.Release:
             case CustomPrisonerInteractions.ExtraMode.ReduceResistanceThenRelease:
-                ___pawn.guest.interactionMode = PrisonerInteractionModeDefOf.Release;
+                CustomPrisonerInteractions.InteractionModeField.SetValue(___pawn.guest,
+                    PrisonerInteractionModeDefOf.Release);
+                //___pawn.guest.interactionMode = PrisonerInteractionModeDefOf.Release;
                 extraInteractionsTracker[___pawn] = CustomPrisonerInteractionsMod.instance.Settings.DefaultReleaseValue;
                 "CTRe.pawnconvertedrelease".Translate(___pawn.NameFullColored);
                 break;
             case CustomPrisonerInteractions.ExtraMode.ReduceResistanceThenRecruit:
             case CustomPrisonerInteractions.ExtraMode.Recruit:
-                ___pawn.guest.interactionMode = PrisonerInteractionModeDefOf.AttemptRecruit;
+                CustomPrisonerInteractions.InteractionModeField.SetValue(___pawn.guest,
+                    PrisonerInteractionModeDefOf.AttemptRecruit);
+                //___pawn.guest.interactionMode = PrisonerInteractionModeDefOf.AttemptRecruit;
                 "CTRe.pawnconvertedrecruit".Translate(___pawn.NameFullColored);
                 break;
             case CustomPrisonerInteractions.ExtraMode.ReduceResistanceThenKill:
             case CustomPrisonerInteractions.ExtraMode.Kill:
-                ___pawn.guest.interactionMode = PrisonerInteractionModeDefOf.Execution;
+                CustomPrisonerInteractions.InteractionModeField.SetValue(___pawn.guest,
+                    PrisonerInteractionModeDefOf.Execution);
+                //___pawn.guest.interactionMode = PrisonerInteractionModeDefOf.Execution;
                 "CTRe.pawnconvertedkill".Translate(___pawn.NameFullColored);
                 break;
             case CustomPrisonerInteractions.ExtraMode.Enslave:
             case CustomPrisonerInteractions.ExtraMode.ReduceWillThenEnslave:
-                ___pawn.guest.interactionMode = PrisonerInteractionModeDefOf.Enslave;
+                CustomPrisonerInteractions.InteractionModeField.SetValue(___pawn.guest,
+                    PrisonerInteractionModeDefOf.Enslave);
+                //___pawn.guest.interactionMode = PrisonerInteractionModeDefOf.Enslave;
                 "CTRe.pawnconvertedenslave".Translate(___pawn.NameFullColored);
                 break;
         }

@@ -1,5 +1,8 @@
 # Changelog for CustomPrisonerInteractions
 
+1.5.0 - Updated for 1.5
+
+
 1.4.5 - Fixed default-values being applied inconsistently
 
 

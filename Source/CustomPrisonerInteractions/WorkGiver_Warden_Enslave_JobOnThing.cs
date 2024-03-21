@@ -10,7 +10,7 @@ public static class WorkGiver_Warden_Enslave_JobOnThing
     public static void Prefix(Thing t, out PrisonerInteractionModeDef __state)
     {
         var pawn2 = (Pawn)t;
-        __state = PrisonerInteractionModeDefOf.NoInteraction;
+        __state = PrisonerInteractionModeDefOf.MaintainOnly;
 
         if (pawn2?.IsPrisonerOfColony == false)
         {
@@ -28,17 +28,19 @@ public static class WorkGiver_Warden_Enslave_JobOnThing
             return;
         }
 
-        __state = pawn2.guest.interactionMode;
+        __state = pawn2.guest.ExclusiveInteractionMode;
 
         if (extraInteractionsTracker[pawn2] == CustomPrisonerInteractions.ExtraMode.ReduceWillThenEnslave)
         {
-            pawn2.guest.interactionMode = PrisonerInteractionModeDefOf.ReduceWill;
+            CustomPrisonerInteractions.InteractionModeField.SetValue(pawn2.guest,
+                PrisonerInteractionModeDefOf.ReduceWill);
+            //pawn2.guest.interactionMode = PrisonerInteractionModeDefOf.ReduceWill;
         }
     }
 
     public static void Postfix(Thing t, PrisonerInteractionModeDef __state)
     {
-        if (__state == PrisonerInteractionModeDefOf.NoInteraction)
+        if (__state == PrisonerInteractionModeDefOf.MaintainOnly)
         {
             return;
         }
@@ -50,9 +52,10 @@ public static class WorkGiver_Warden_Enslave_JobOnThing
             return;
         }
 
-        if (pawn2.guest.interactionMode == PrisonerInteractionModeDefOf.ReduceWill)
+        if (pawn2.guest.ExclusiveInteractionMode == PrisonerInteractionModeDefOf.ReduceWill)
         {
-            pawn2.guest.interactionMode = __state;
+            CustomPrisonerInteractions.InteractionModeField.SetValue(pawn2.guest, __state);
+            //pawn2.guest.interactionMode = __state;
         }
     }
 }

@@ -14,7 +14,7 @@ public static class Pawn_GuestTracker_CanBeBroughtFood
             return;
         }
 
-        if (__instance.interactionMode != PrisonerInteractionModeDefOf.Release)
+        if (__instance.ExclusiveInteractionMode != PrisonerInteractionModeDefOf.Release)
         {
             return;
         }

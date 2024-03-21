@@ -10,7 +10,7 @@ public static class Pawn_GuestTracker_CapturedBy
     public static void Postfix(Pawn_GuestTracker __instance, ref Pawn ___pawn, Pawn byPawn)
     {
         if (CustomPrisonerInteractionsMod.instance.Settings.DefaultNewValue ==
-            PrisonerInteractionModeDefOf.NoInteraction)
+            PrisonerInteractionModeDefOf.MaintainOnly)
         {
             return;
         }
@@ -30,7 +30,16 @@ public static class Pawn_GuestTracker_CapturedBy
             return;
         }
 
-        ___pawn.guest.interactionMode = CustomPrisonerInteractionsMod.instance.Settings.DefaultNewValue;
+        if (!CustomPrisonerInteractions.CanUsePrisonerInteractionMode(___pawn,
+                CustomPrisonerInteractionsMod.instance.Settings.DefaultNewValue))
+        {
+            return;
+        }
+
+        CustomPrisonerInteractions.InteractionModeField.SetValue(___pawn.guest,
+            CustomPrisonerInteractionsMod.instance.Settings.DefaultNewValue);
+
+        //___pawn.guest.inter = CustomPrisonerInteractionsMod.instance.Settings.DefaultNewValue;
 
         var extraInteractionsTracker = byPawn.Map.GetExtraInteractionsTracker();
         if (extraInteractionsTracker == null)
@@ -38,15 +47,15 @@ public static class Pawn_GuestTracker_CapturedBy
             return;
         }
 
-        if (__instance.interactionMode == PrisonerInteractionModeDefOf.Release)
+        if (__instance.ExclusiveInteractionMode == PrisonerInteractionModeDefOf.Release)
         {
             extraInteractionsTracker[___pawn] =
                 CustomPrisonerInteractionsMod.instance.Settings.DefaultReleaseValue;
             return;
         }
 
-        if (__instance.interactionMode != PrisonerInteractionModeDefOf.Convert &&
-            __instance.interactionMode.defName != "PrisonLabor_workAndConvertOption")
+        if (__instance.ExclusiveInteractionMode != PrisonerInteractionModeDefOf.Convert &&
+            __instance.ExclusiveInteractionMode.defName != "PrisonLabor_workAndConvertOption")
         {
             return;
         }

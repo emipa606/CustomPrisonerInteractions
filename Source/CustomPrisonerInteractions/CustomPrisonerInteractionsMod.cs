@@ -75,8 +75,9 @@ internal class CustomPrisonerInteractionsMod : Mod
         if (listing_Standard.ButtonText("CPI.change".Translate()))
         {
             var list = new List<FloatMenuOption>();
-            foreach (var interactionModeDef in DefDatabase<PrisonerInteractionModeDef>.AllDefsListForReading.OrderBy(
-                         def => def.listOrder))
+            foreach (var interactionModeDef in DefDatabase<PrisonerInteractionModeDef>.AllDefsListForReading
+                         .Where(def => !def.isNonExclusiveInteraction).OrderBy(
+                             def => def.listOrder))
             {
                 list.Add(new FloatMenuOption(interactionModeDef.LabelCap,
                     delegate { Settings.DefaultNewValue = interactionModeDef; },

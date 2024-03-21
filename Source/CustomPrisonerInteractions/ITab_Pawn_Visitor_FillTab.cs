@@ -26,7 +26,7 @@ public class ITab_Pawn_Visitor_FillTab
         }
 
         __state = new Tuple<List<FloatMenuOption>, string>([],
-            pawn.guest.interactionMode.defName);
+            pawn.guest.ExclusiveInteractionMode.defName);
 
         var extraInteractionsTracker = pawn.Map.GetExtraInteractionsTracker();
         if (extraInteractionsTracker == null)
@@ -41,7 +41,7 @@ public class ITab_Pawn_Visitor_FillTab
             currentExtraInterraction = extraInteractionsTracker[pawn];
         }
 
-        switch (pawn.guest.interactionMode.defName)
+        switch (pawn.guest.ExclusiveInteractionMode.defName)
         {
             case "Release":
                 if (currentExtraInterraction is not (ReleaseWhenHealthy or ReleaseWhenAbleToWalk or ReleaseWhenNotGuilty
@@ -136,14 +136,19 @@ public class ITab_Pawn_Visitor_FillTab
             return;
         }
 
-        if (__state.Item2 != pawn.guest.interactionMode.defName && !extraInteractionsTracker.Has(pawn) ||
+        if (__state.Item2 != pawn.guest.ExclusiveInteractionMode.defName && !extraInteractionsTracker.Has(pawn) ||
             extraInteractionsTracker[pawn] == Undefined)
         {
-            switch (pawn.guest.interactionMode.defName)
+            switch (pawn.guest.ExclusiveInteractionMode.defName)
             {
                 case "Release":
-                    extraInteractionsTracker[pawn] =
-                        CustomPrisonerInteractionsMod.instance.Settings.DefaultReleaseValue;
+                    if (CanUseExtraMode(pawn, CustomPrisonerInteractionsMod.instance.Settings.DefaultReleaseValue))
+
+                    {
+                        extraInteractionsTracker[pawn] =
+                            CustomPrisonerInteractionsMod.instance.Settings.DefaultReleaseValue;
+                    }
+
                     break;
                 case "Convert":
                 case "PrisonLabor_workAndConvertOption":
