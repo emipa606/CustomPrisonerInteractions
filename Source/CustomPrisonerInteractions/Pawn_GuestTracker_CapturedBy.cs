@@ -49,8 +49,13 @@ public static class Pawn_GuestTracker_CapturedBy
 
         if (__instance.ExclusiveInteractionMode == PrisonerInteractionModeDefOf.Release)
         {
-            extraInteractionsTracker[___pawn] =
-                CustomPrisonerInteractionsMod.instance.Settings.DefaultReleaseValue;
+            if (CustomPrisonerInteractions.CanUseExtraMode(___pawn,
+                    CustomPrisonerInteractionsMod.instance.Settings.DefaultReleaseValue))
+            {
+                extraInteractionsTracker[___pawn] =
+                    CustomPrisonerInteractionsMod.instance.Settings.DefaultReleaseValue;
+            }
+
             return;
         }
 
@@ -61,7 +66,11 @@ public static class Pawn_GuestTracker_CapturedBy
         }
 
         ___pawn.guest.ideoForConversion = Faction.OfPlayer.ideos.PrimaryIdeo;
-        extraInteractionsTracker[___pawn] =
-            CustomPrisonerInteractionsMod.instance.Settings.DefaultConvertValue;
+        if (CustomPrisonerInteractions.CanUseExtraMode(___pawn,
+                CustomPrisonerInteractionsMod.instance.Settings.DefaultConvertValue))
+        {
+            extraInteractionsTracker[___pawn] =
+                CustomPrisonerInteractionsMod.instance.Settings.DefaultConvertValue;
+        }
     }
 }

@@ -50,15 +50,20 @@ public class ITab_Pawn_Visitor_FillTab
                     extraInteractionsTracker[pawn] = Undefined;
                 }
 
-                __state.Item1.Add(new FloatMenuOption(getExtraInterractionExplanation(ReleaseWhenNotGuilty),
-                    delegate { extraInteractionsTracker[pawn] = ReleaseWhenNotGuilty; },
-                    MenuOptionPriority.Default, null, null, 29f));
-                __state.Item1.Add(new FloatMenuOption(getExtraInterractionExplanation(ReleaseWhenAbleToWalk),
-                    delegate { extraInteractionsTracker[pawn] = ReleaseWhenAbleToWalk; },
-                    MenuOptionPriority.Default, null, null, 29f));
-                __state.Item1.Add(new FloatMenuOption(getExtraInterractionExplanation(ReleaseWhenHealthy),
-                    delegate { extraInteractionsTracker[pawn] = ReleaseWhenHealthy; },
-                    MenuOptionPriority.Default, null, null, 29f));
+                foreach (var extraMode in new List<ExtraMode>
+                         {
+                             ReleaseWhenNotGuilty,
+                             ReleaseWhenAbleToWalk,
+                             ReleaseWhenHealthy
+                         })
+                {
+                    if (CanUseExtraMode(pawn, extraMode))
+                    {
+                        __state.Item1.Add(new FloatMenuOption(getExtraInterractionExplanation(extraMode),
+                            delegate { extraInteractionsTracker[pawn] = extraMode; },
+                            MenuOptionPriority.Default, null, null, 29f));
+                    }
+                }
 
                 break;
             case "Convert":
@@ -68,49 +73,28 @@ public class ITab_Pawn_Visitor_FillTab
                     extraInteractionsTracker[pawn] = Undefined;
                 }
 
-                __state.Item1.Add(new FloatMenuOption(getExtraInterractionExplanation(Recruit),
-                    delegate { extraInteractionsTracker[pawn] = Recruit; },
-                    MenuOptionPriority.Default, null, null, 29f));
-                __state.Item1.Add(new FloatMenuOption(getExtraInterractionExplanation(ReduceResistance),
-                    delegate { extraInteractionsTracker[pawn] = ReduceResistance; },
-                    MenuOptionPriority.Default, null, null, 29f));
-                __state.Item1.Add(new FloatMenuOption(getExtraInterractionExplanation(ReduceResistanceThenRecruit),
-                    delegate
+                foreach (var extraMode in new List<ExtraMode>
+                         {
+                             Recruit,
+                             ReduceResistance,
+                             ReduceResistanceThenRecruit,
+                             Enslave,
+                             ReduceWill,
+                             ReduceWillThenEnslave,
+                             Release,
+                             ReduceResistanceThenRelease,
+                             Kill,
+                             ReduceResistanceThenKill
+                         })
+                {
+                    if (CanUseExtraMode(pawn, extraMode))
                     {
-                        extraInteractionsTracker[pawn] =
-                            ReduceResistanceThenRecruit;
-                    },
-                    MenuOptionPriority.Default, null, null, 29f));
+                        __state.Item1.Add(new FloatMenuOption(getExtraInterractionExplanation(extraMode),
+                            delegate { extraInteractionsTracker[pawn] = extraMode; },
+                            MenuOptionPriority.Default, null, null, 29f));
+                    }
+                }
 
-                __state.Item1.Add(new FloatMenuOption(getExtraInterractionExplanation(Enslave),
-                    delegate { extraInteractionsTracker[pawn] = Enslave; },
-                    MenuOptionPriority.Default, null, null, 29f));
-                __state.Item1.Add(new FloatMenuOption(getExtraInterractionExplanation(ReduceWill),
-                    delegate { extraInteractionsTracker[pawn] = ReduceWill; },
-                    MenuOptionPriority.Default, null, null, 29f));
-                __state.Item1.Add(new FloatMenuOption(getExtraInterractionExplanation(ReduceWillThenEnslave),
-                    delegate { extraInteractionsTracker[pawn] = ReduceWillThenEnslave; },
-                    MenuOptionPriority.Default, null, null, 29f));
-                __state.Item1.Add(new FloatMenuOption(getExtraInterractionExplanation(Release),
-                    delegate { extraInteractionsTracker[pawn] = Release; },
-                    MenuOptionPriority.Default, null, null, 29f));
-                __state.Item1.Add(new FloatMenuOption(getExtraInterractionExplanation(ReduceResistanceThenRelease),
-                    delegate
-                    {
-                        extraInteractionsTracker[pawn] =
-                            ReduceResistanceThenRelease;
-                    },
-                    MenuOptionPriority.Default, null, null, 29f));
-                __state.Item1.Add(new FloatMenuOption(getExtraInterractionExplanation(Kill),
-                    delegate { extraInteractionsTracker[pawn] = Kill; },
-                    MenuOptionPriority.Default, null, null, 29f));
-                __state.Item1.Add(new FloatMenuOption(getExtraInterractionExplanation(ReduceResistanceThenKill),
-                    delegate
-                    {
-                        extraInteractionsTracker[pawn] =
-                            ReduceResistanceThenKill;
-                    },
-                    MenuOptionPriority.Default, null, null, 29f));
                 break;
             default:
                 extraInteractionsTracker[pawn] = Undefined;
@@ -152,8 +136,12 @@ public class ITab_Pawn_Visitor_FillTab
                     break;
                 case "Convert":
                 case "PrisonLabor_workAndConvertOption":
-                    extraInteractionsTracker[pawn] =
-                        CustomPrisonerInteractionsMod.instance.Settings.DefaultConvertValue;
+                    if (CanUseExtraMode(pawn, CustomPrisonerInteractionsMod.instance.Settings.DefaultConvertValue))
+                    {
+                        extraInteractionsTracker[pawn] =
+                            CustomPrisonerInteractionsMod.instance.Settings.DefaultConvertValue;
+                    }
+
                     break;
             }
         }
@@ -165,7 +153,8 @@ public class ITab_Pawn_Visitor_FillTab
                 delegate { extraInteractionsTracker[pawn] = None; },
                 MenuOptionPriority.Default, null, null, 29f));
 
-        var buttonArea = new Rect(0f + margin, ___size.y - buttonSpace - margin, ___size.x - (margin * 2), buttonSpace);
+        var buttonArea = new Rect(0f + margin, ___size.y - buttonSpace - margin, ___size.x - (margin * 2),
+            buttonSpace);
 
         Widgets.Label(buttonArea, "CPI.options".Translate());
 

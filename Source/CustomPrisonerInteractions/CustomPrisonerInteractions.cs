@@ -35,6 +35,24 @@ public static class CustomPrisonerInteractions
 
     public static Pawn pawnWithIdeologyCrisis = null;
 
+    public static Dictionary<ExtraMode, PrisonerInteractionModeDef> ModeDictionary =
+        new Dictionary<ExtraMode, PrisonerInteractionModeDef>
+        {
+            [ExtraMode.Kill] = PrisonerInteractionModeDefOf.Execution,
+            [ExtraMode.Release] = PrisonerInteractionModeDefOf.Release,
+            [ExtraMode.ReleaseWhenHealthy] = PrisonerInteractionModeDefOf.Release,
+            [ExtraMode.ReleaseWhenAbleToWalk] = PrisonerInteractionModeDefOf.Release,
+            [ExtraMode.ReleaseWhenNotGuilty] = PrisonerInteractionModeDefOf.Release,
+            [ExtraMode.ReduceResistance] = PrisonerInteractionModeDefOf.ReduceResistance,
+            [ExtraMode.ReduceResistanceThenKill] = PrisonerInteractionModeDefOf.Execution,
+            [ExtraMode.ReduceResistanceThenRecruit] = PrisonerInteractionModeDefOf.AttemptRecruit,
+            [ExtraMode.ReduceResistanceThenRelease] = PrisonerInteractionModeDefOf.Release,
+            [ExtraMode.Recruit] = PrisonerInteractionModeDefOf.AttemptRecruit,
+            [ExtraMode.Enslave] = PrisonerInteractionModeDefOf.Enslave,
+            [ExtraMode.ReduceWill] = PrisonerInteractionModeDefOf.ReduceWill,
+            [ExtraMode.ReduceWillThenEnslave] = PrisonerInteractionModeDefOf.Enslave
+        };
+
     static CustomPrisonerInteractions()
     {
         var harmony = new Harmony("Mlie.CustomPrisonerInteractions");
@@ -87,14 +105,7 @@ public static class CustomPrisonerInteractions
 
     public static bool CanUseExtraMode(Pawn pawn, ExtraMode mode)
     {
-        if (!pawn.guest.Recruitable && mode is ExtraMode.Recruit or ExtraMode.ReduceResistanceThenRecruit)
-        {
-            return false;
-        }
-
-        return !pawn.IsWildMan() || mode is not (ExtraMode.Recruit or ExtraMode.ReduceResistanceThenRecruit
-            or ExtraMode.ReduceResistance or ExtraMode.ReduceResistanceThenKill
-            or ExtraMode.ReduceResistanceThenRelease);
+        return !ModeDictionary.ContainsKey(mode) || CanUsePrisonerInteractionMode(pawn, ModeDictionary[mode]);
     }
 
     public static bool CanUsePrisonerInteractionMode(Pawn pawn, PrisonerInteractionModeDef mode)
