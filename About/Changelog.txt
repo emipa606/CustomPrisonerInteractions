@@ -1,5 +1,8 @@
 # Changelog for CustomPrisonerInteractions
 
+1.5.2 - Fix for the latest rimworld-patch that renamed a fieldname
+
+
 1.5.1 - Fixed unwaveringly loyal issue
 
 

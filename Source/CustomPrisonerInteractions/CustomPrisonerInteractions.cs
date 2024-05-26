@@ -33,9 +33,14 @@ public static class CustomPrisonerInteractions
     private static readonly Dictionary<Map, ExtraInteractionsTracker> ExtraInteractionsTrackers =
         new Dictionary<Map, ExtraInteractionsTracker>();
 
+    private static readonly MethodInfo isStudiableMethod = AccessTools.Method(typeof(ITab_Pawn_Visitor), "IsStudiable");
+
+    private static readonly MethodInfo colonyHasAnyBloodfeederMethod =
+        AccessTools.Method(typeof(ITab_Pawn_Visitor), "ColonyHasAnyBloodfeeder");
+
     public static Pawn pawnWithIdeologyCrisis = null;
 
-    public static Dictionary<ExtraMode, PrisonerInteractionModeDef> ModeDictionary =
+    public static readonly Dictionary<ExtraMode, PrisonerInteractionModeDef> ModeDictionary =
         new Dictionary<ExtraMode, PrisonerInteractionModeDef>
         {
             [ExtraMode.Kill] = PrisonerInteractionModeDefOf.Execution,
@@ -65,44 +70,6 @@ public static class CustomPrisonerInteractions
         }
     }
 
-    private static bool ColonyHasAnyBloodfeeder(Map map)
-    {
-        if (!ModsConfig.BiotechActive)
-        {
-            return false;
-        }
-
-        foreach (var item in map.mapPawns.FreeColonistsAndPrisonersSpawned)
-        {
-            if (item.IsBloodfeeder())
-            {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    private static bool IsStudiable(Pawn pawn)
-    {
-        if (!ModsConfig.AnomalyActive)
-        {
-            return false;
-        }
-
-        if (!pawn.TryGetComp<CompStudiable>(out var comp) || !comp.EverStudiable())
-        {
-            return false;
-        }
-
-        if (pawn.kindDef.studiableAsPrisoner)
-        {
-            return !pawn.everBrainWiped;
-        }
-
-        return false;
-    }
-
     public static bool CanUseExtraMode(Pawn pawn, ExtraMode mode)
     {
         return !ModeDictionary.ContainsKey(mode) || CanUsePrisonerInteractionMode(pawn, ModeDictionary[mode]);
@@ -120,13 +87,14 @@ public static class CustomPrisonerInteractions
             return false;
         }
 
-        if (mode.hideIfNoBloodfeeders && pawn.MapHeld != null && !ColonyHasAnyBloodfeeder(pawn.MapHeld))
+        if (mode.hideIfNoBloodfeeders && pawn.MapHeld != null &&
+            (bool)colonyHasAnyBloodfeederMethod.Invoke(null, [pawn.MapHeld]) == false)
         {
             return false;
         }
 
         if (mode.hideOnHemogenicPawns && ModsConfig.BiotechActive && pawn.genes != null &&
-            pawn.genes.HasGene(GeneDefOf.Hemogenic))
+            pawn.genes.HasActiveGene(GeneDefOf.Hemogenic))
         {
             return false;
         }
@@ -141,7 +109,7 @@ public static class CustomPrisonerInteractions
             return true;
         }
 
-        if (mode.hideIfNotStudiableAsPrisoner && !IsStudiable(pawn))
+        if (mode.hideIfNotStudiableAsPrisoner && (bool)isStudiableMethod.Invoke(null, [pawn]) == false)
         {
             return false;
         }

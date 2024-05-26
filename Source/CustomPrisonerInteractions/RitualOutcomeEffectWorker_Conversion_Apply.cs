@@ -4,7 +4,7 @@ using Verse;
 
 namespace CustomPrisonerInteractions;
 
-[HarmonyPatch(typeof(RitualOutcomeEffectWorker_Conversion), "Apply")]
+[HarmonyPatch(typeof(RitualOutcomeEffectWorker_Conversion), nameof(RitualOutcomeEffectWorker_Conversion.Apply))]
 public static class RitualOutcomeEffectWorker_Conversion_Apply
 {
     public static void Prefix(LordJob_Ritual jobRitual, out Ideo __state)

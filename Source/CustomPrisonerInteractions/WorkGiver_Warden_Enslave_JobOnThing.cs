@@ -4,7 +4,7 @@ using Verse;
 
 namespace CustomPrisonerInteractions;
 
-[HarmonyPatch(typeof(WorkGiver_Warden_Enslave), "JobOnThing")]
+[HarmonyPatch(typeof(WorkGiver_Warden_Enslave), nameof(WorkGiver_Warden_Enslave.JobOnThing))]
 public static class WorkGiver_Warden_Enslave_JobOnThing
 {
     public static void Prefix(Thing t, out PrisonerInteractionModeDef __state)

@@ -4,7 +4,7 @@ using Verse;
 
 namespace CustomPrisonerInteractions;
 
-[HarmonyPatch(typeof(Pawn_GuestTracker), "CapturedBy")]
+[HarmonyPatch(typeof(Pawn_GuestTracker), nameof(Pawn_GuestTracker.CapturedBy))]
 public static class Pawn_GuestTracker_CapturedBy
 {
     public static void Postfix(Pawn_GuestTracker __instance, ref Pawn ___pawn, Pawn byPawn)
@@ -38,8 +38,6 @@ public static class Pawn_GuestTracker_CapturedBy
 
         CustomPrisonerInteractions.InteractionModeField.SetValue(___pawn.guest,
             CustomPrisonerInteractionsMod.instance.Settings.DefaultNewValue);
-
-        //___pawn.guest.inter = CustomPrisonerInteractionsMod.instance.Settings.DefaultNewValue;
 
         var extraInteractionsTracker = byPawn.Map.GetExtraInteractionsTracker();
         if (extraInteractionsTracker == null)

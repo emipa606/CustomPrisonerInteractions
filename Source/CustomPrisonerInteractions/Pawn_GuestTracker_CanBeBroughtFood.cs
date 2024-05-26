@@ -4,7 +4,7 @@ using Verse;
 
 namespace CustomPrisonerInteractions;
 
-[HarmonyPatch(typeof(Pawn_GuestTracker), "CanBeBroughtFood", MethodType.Getter)]
+[HarmonyPatch(typeof(Pawn_GuestTracker), nameof(Pawn_GuestTracker.CanBeBroughtFood), MethodType.Getter)]
 public static class Pawn_GuestTracker_CanBeBroughtFood
 {
     public static void Postfix(Pawn_GuestTracker __instance, Pawn ___pawn, ref bool __result)

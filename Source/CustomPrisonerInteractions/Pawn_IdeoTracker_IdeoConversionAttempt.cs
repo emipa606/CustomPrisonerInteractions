@@ -4,7 +4,7 @@ using Verse;
 
 namespace CustomPrisonerInteractions;
 
-[HarmonyPatch(typeof(Pawn_IdeoTracker), "IdeoConversionAttempt")]
+[HarmonyPatch(typeof(Pawn_IdeoTracker), nameof(Pawn_IdeoTracker.IdeoConversionAttempt))]
 public static class Pawn_IdeoTracker_IdeoConversionAttempt
 {
     public static void Postfix(bool __result, Pawn ___pawn)

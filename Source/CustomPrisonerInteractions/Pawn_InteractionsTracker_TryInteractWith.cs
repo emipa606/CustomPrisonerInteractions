@@ -4,7 +4,7 @@ using Verse;
 
 namespace CustomPrisonerInteractions;
 
-[HarmonyPatch(typeof(Pawn_InteractionsTracker), "TryInteractWith")]
+[HarmonyPatch(typeof(Pawn_InteractionsTracker), nameof(Pawn_InteractionsTracker.TryInteractWith))]
 public static class Pawn_InteractionsTracker_TryInteractWith
 {
     public static void Prefix(Pawn recipient, out PrisonerInteractionModeDef __state)
