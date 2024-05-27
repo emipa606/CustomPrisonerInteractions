@@ -1,5 +1,8 @@
 # Changelog for CustomPrisonerInteractions
 
+1.5.3 - Fixed release when healthy alternatives
+
+
 1.5.2 - Fix for the latest rimworld-patch that renamed a fieldname
 
 
