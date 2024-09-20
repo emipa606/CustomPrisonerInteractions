@@ -28,4 +28,5 @@
   <CPI.reduceresistancefirstthenhemogenfarm>Widerstand vorher reduzieren, Hämogenfarm nachher</CPI.reduceresistancefirstthenhemogenfarm>
   <CPI.releasewhenabletowalk>Nur wenn sie gehen können</CPI.releasewhenabletowalk>
   <CPI.releasewhennotguilty>Nur wenn sie nicht mehr schuldig sind</CPI.releasewhennotguilty>
+  <CPI.autohemogen>Automatische Aktivierung der Hämogenfarm bei neuen Gefangenen</CPI.autohemogen>
 </LanguageData>

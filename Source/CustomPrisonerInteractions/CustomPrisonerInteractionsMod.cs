@@ -87,6 +87,15 @@ internal class CustomPrisonerInteractionsMod : Mod
             Find.WindowStack.Add(new FloatMenu(list));
         }
 
+        if (ModsConfig.BiotechActive)
+        {
+            listing_Standard.CheckboxLabeled("CPI.autohemogen".Translate(), ref Settings.AutoHemogen);
+        }
+        else
+        {
+            Settings.AutoHemogen = false;
+        }
+
         listing_Standard.Gap();
         listing_Standard.Label(
             "CPI.defaultrelease".Translate(

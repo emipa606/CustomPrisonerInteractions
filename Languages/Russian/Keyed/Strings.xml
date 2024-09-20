@@ -28,4 +28,5 @@
   <CPI.reduceresistancefirstthenhemogenfarm>Снижение резистентности до, гемогенная ферма после</CPI.reduceresistancefirstthenhemogenfarm>
   <CPI.releasewhenabletowalk>Только в состоянии ходить</CPI.releasewhenabletowalk>
   <CPI.releasewhennotguilty>Только если больше не виновен</CPI.releasewhennotguilty>
+  <CPI.autohemogen>Автоматически активируйте ферму гемогена для новых заключенных</CPI.autohemogen>
 </LanguageData>

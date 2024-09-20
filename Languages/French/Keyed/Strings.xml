@@ -28,4 +28,5 @@
   <CPI.reduceresistancefirstthenhemogenfarm>Réduire la résistance avant, hémogéniser après</CPI.reduceresistancefirstthenhemogenfarm>
   <CPI.releasewhenabletowalk>Seulement lorsque l'on est capable de marcher</CPI.releasewhenabletowalk>
   <CPI.releasewhennotguilty>Uniquement en cas de non-culpabilité</CPI.releasewhennotguilty>
+  <CPI.autohemogen>Activation automatique de la ferme d'hémoglobine pour les nouveaux prisonniers</CPI.autohemogen>
 </LanguageData>

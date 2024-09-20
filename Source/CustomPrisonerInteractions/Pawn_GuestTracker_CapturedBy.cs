@@ -9,6 +9,12 @@ public static class Pawn_GuestTracker_CapturedBy
 {
     public static void Postfix(Pawn_GuestTracker __instance, ref Pawn ___pawn, Pawn byPawn)
     {
+        if (CustomPrisonerInteractionsMod.instance.Settings.AutoHemogen && ___pawn.genes == null ||
+            !___pawn.genes.HasActiveGene(GeneDefOf.Hemogenic))
+        {
+            ___pawn.guest.ToggleNonExclusiveInteraction(PrisonerInteractionModeDefOf.HemogenFarm, true);
+        }
+
         if (CustomPrisonerInteractionsMod.instance.Settings.DefaultNewValue ==
             PrisonerInteractionModeDefOf.MaintainOnly)
         {

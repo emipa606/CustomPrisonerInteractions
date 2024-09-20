@@ -28,4 +28,5 @@
   <CPI.reduceresistancefirstthenhemogenfarm>之前减少阻力，之后减少血源农场</CPI.reduceresistancefirstthenhemogenfarm>
   <CPI.releasewhenabletowalk>只能行走</CPI.releasewhenabletowalk>
   <CPI.releasewhennotguilty>只有当不再有罪时</CPI.releasewhennotguilty>
+  <CPI.autohemogen>自动激活新囚犯的血源农场</CPI.autohemogen>
 </LanguageData>
