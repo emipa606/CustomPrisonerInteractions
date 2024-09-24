@@ -38,6 +38,8 @@ It also adds the following options for the Convert option
 
 You can use this mod without owning Ideology, as it will still show for the release-option.
 
+If Biotech is active, there is an option to automatically enable hemogen farm on new prisoners.
+
 If you have suggestions for more options, please leave a comment and Ill see if I can add them to the mod.
 
 - [Chinese translation](https://steamcommunity.com/sharedfiles/filedetails/?edit=true&id=2841412975) by Chiwei

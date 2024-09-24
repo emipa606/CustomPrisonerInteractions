@@ -1,5 +1,8 @@
 # Changelog for CustomPrisonerInteractions
 
+1.5.5 - Fixed hemogen farming always triggering
+
+
 1.5.4 - Added option to automatically activate hemogen farm on new prisoners
 Used DeepL to update translations for ChineseSimplified, French, German, Russian
 

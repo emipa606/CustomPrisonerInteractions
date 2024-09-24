@@ -63,6 +63,8 @@ It also adds the following options for the Convert option
 
 You can use this mod without owning Ideology, as it will still show for the release-option.
 
+If Biotech is active, there is an option to automatically enable hemogen farm on new prisoners.
+
 If you have suggestions for more options, please leave a comment and Ill see if I can add them to the mod.
 
 - [url=https://steamcommunity.com/sharedfiles/filedetails/?edit=true&amp;id=2841412975]Chinese translation[/url] by Chiwei
@@ -106,5 +108,5 @@ Since modding is just a hobby for me I expect no donations to keep modding. If y
 [/list]
 
 [url=https://steamcommunity.com/sharedfiles/filedetails/changelog/2841231775][img]https://img.shields.io/github/v/release/emipa606/CustomPrisonerInteractions?label=latest%20version&amp;style=plastic&amp;labelColor=0070cd&amp;color=white[/img][/url]</description>
-  <modVersion IgnoreIfNoMatchingField="True">1.5.4</modVersion>
+  <modVersion IgnoreIfNoMatchingField="True">1.5.5</modVersion>
 </ModMetaData>
