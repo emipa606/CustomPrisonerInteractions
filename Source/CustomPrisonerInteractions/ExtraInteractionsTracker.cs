@@ -26,6 +26,12 @@ public class ExtraInteractionsTracker(Map map) : MapComponent(map)
     {
         base.ExposeData();
 
+        if (Scribe.mode == LoadSaveMode.Saving)
+        {
+            // Remove null keys
+            extraInteractions.RemoveAll(kvp => kvp.Key == null || kvp.Key.Destroyed);
+        }
+
         Scribe_Collections.Look(ref extraInteractions, "ExtraInteractions", LookMode.Reference, LookMode.Value,
             ref extraInteractionsKeys, ref extraInteractionsValues);
     }
