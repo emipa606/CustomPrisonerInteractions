@@ -1,5 +1,8 @@
 # Changelog for CustomPrisonerInteractions
 
+1.5.8 - Extra release-action can now be set to None when the default action has a value set
+
+
 1.5.7 - Removes dead and destroyed pawns from the Pawn-list on save, to avoid null-errors on load
 
 

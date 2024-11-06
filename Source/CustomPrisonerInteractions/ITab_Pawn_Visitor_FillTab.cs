@@ -45,6 +45,7 @@ public class ITab_Pawn_Visitor_FillTab
         {
             case "Release":
                 if (currentExtraInterraction is not (ReleaseWhenHealthy or ReleaseWhenAbleToWalk or ReleaseWhenNotGuilty
+                    or None
                     ))
                 {
                     extraInteractionsTracker[pawn] = Undefined;
