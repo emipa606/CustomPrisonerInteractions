@@ -9,14 +9,14 @@ public static class Pawn_GuestTracker_CapturedBy
 {
     public static void Postfix(Pawn_GuestTracker __instance, ref Pawn ___pawn, Pawn byPawn)
     {
-        if (CustomPrisonerInteractionsMod.instance.Settings.AutoHemogen && (___pawn.genes == null ||
+        if (CustomPrisonerInteractionsMod.Instance.Settings.AutoHemogen && (___pawn.genes == null ||
                                                                             !___pawn.genes.HasActiveGene(
                                                                                 GeneDefOf.Hemogenic)))
         {
             ___pawn.guest.ToggleNonExclusiveInteraction(PrisonerInteractionModeDefOf.HemogenFarm, true);
         }
 
-        if (CustomPrisonerInteractionsMod.instance.Settings.DefaultNewValue ==
+        if (CustomPrisonerInteractionsMod.Instance.Settings.DefaultNewValue ==
             PrisonerInteractionModeDefOf.MaintainOnly)
         {
             return;
@@ -38,13 +38,13 @@ public static class Pawn_GuestTracker_CapturedBy
         }
 
         if (!CustomPrisonerInteractions.CanUsePrisonerInteractionMode(___pawn,
-                CustomPrisonerInteractionsMod.instance.Settings.DefaultNewValue))
+                CustomPrisonerInteractionsMod.Instance.Settings.DefaultNewValue))
         {
             return;
         }
 
         CustomPrisonerInteractions.InteractionModeField.SetValue(___pawn.guest,
-            CustomPrisonerInteractionsMod.instance.Settings.DefaultNewValue);
+            CustomPrisonerInteractionsMod.Instance.Settings.DefaultNewValue);
 
         var extraInteractionsTracker = byPawn.Map.GetExtraInteractionsTracker();
         if (extraInteractionsTracker == null)
@@ -55,10 +55,10 @@ public static class Pawn_GuestTracker_CapturedBy
         if (__instance.ExclusiveInteractionMode == PrisonerInteractionModeDefOf.Release)
         {
             if (CustomPrisonerInteractions.CanUseExtraMode(___pawn,
-                    CustomPrisonerInteractionsMod.instance.Settings.DefaultReleaseValue))
+                    CustomPrisonerInteractionsMod.Instance.Settings.DefaultReleaseValue))
             {
                 extraInteractionsTracker[___pawn] =
-                    CustomPrisonerInteractionsMod.instance.Settings.DefaultReleaseValue;
+                    CustomPrisonerInteractionsMod.Instance.Settings.DefaultReleaseValue;
             }
 
             return;
@@ -72,10 +72,10 @@ public static class Pawn_GuestTracker_CapturedBy
 
         ___pawn.guest.ideoForConversion = Faction.OfPlayer.ideos.PrimaryIdeo;
         if (CustomPrisonerInteractions.CanUseExtraMode(___pawn,
-                CustomPrisonerInteractionsMod.instance.Settings.DefaultConvertValue))
+                CustomPrisonerInteractionsMod.Instance.Settings.DefaultConvertValue))
         {
             extraInteractionsTracker[___pawn] =
-                CustomPrisonerInteractionsMod.instance.Settings.DefaultConvertValue;
+                CustomPrisonerInteractionsMod.Instance.Settings.DefaultConvertValue;
         }
     }
 }

@@ -34,7 +34,6 @@ public static class WorkGiver_Warden_Enslave_JobOnThing
         {
             CustomPrisonerInteractions.InteractionModeField.SetValue(pawn2.guest,
                 PrisonerInteractionModeDefOf.ReduceWill);
-            //pawn2.guest.interactionMode = PrisonerInteractionModeDefOf.ReduceWill;
         }
     }
 
@@ -55,7 +54,6 @@ public static class WorkGiver_Warden_Enslave_JobOnThing
         if (pawn2.guest.ExclusiveInteractionMode == PrisonerInteractionModeDefOf.ReduceWill)
         {
             CustomPrisonerInteractions.InteractionModeField.SetValue(pawn2.guest, __state);
-            //pawn2.guest.interactionMode = __state;
         }
     }
 }

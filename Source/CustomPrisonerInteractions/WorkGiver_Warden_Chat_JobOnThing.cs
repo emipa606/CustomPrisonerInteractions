@@ -40,7 +40,6 @@ public static class WorkGiver_Warden_Chat_JobOnThing
                 {
                     CustomPrisonerInteractions.InteractionModeField.SetValue(pawn2.guest,
                         PrisonerInteractionModeDefOf.ReduceResistance);
-                    //pawn2.guest.interactionMode = PrisonerInteractionModeDefOf.ReduceResistance;
                 }
 
                 break;
@@ -50,7 +49,6 @@ public static class WorkGiver_Warden_Chat_JobOnThing
                 {
                     CustomPrisonerInteractions.InteractionModeField.SetValue(pawn2.guest,
                         PrisonerInteractionModeDefOf.ReduceWill);
-                    //pawn2.guest.interactionMode = PrisonerInteractionModeDefOf.ReduceWill;
                 }
 
                 break;
@@ -75,7 +73,6 @@ public static class WorkGiver_Warden_Chat_JobOnThing
             pawn2.guest.ExclusiveInteractionMode == PrisonerInteractionModeDefOf.ReduceWill)
         {
             CustomPrisonerInteractions.InteractionModeField.SetValue(pawn2.guest, __state);
-            //pawn2.guest.interactionMode = __state;
         }
     }
 }

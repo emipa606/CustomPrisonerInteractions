@@ -127,20 +127,20 @@ public class ITab_Pawn_Visitor_FillTab
             switch (pawn.guest.ExclusiveInteractionMode.defName)
             {
                 case "Release":
-                    if (CanUseExtraMode(pawn, CustomPrisonerInteractionsMod.instance.Settings.DefaultReleaseValue))
+                    if (CanUseExtraMode(pawn, CustomPrisonerInteractionsMod.Instance.Settings.DefaultReleaseValue))
 
                     {
                         extraInteractionsTracker[pawn] =
-                            CustomPrisonerInteractionsMod.instance.Settings.DefaultReleaseValue;
+                            CustomPrisonerInteractionsMod.Instance.Settings.DefaultReleaseValue;
                     }
 
                     break;
                 case "Convert":
                 case "PrisonLabor_workAndConvertOption":
-                    if (CanUseExtraMode(pawn, CustomPrisonerInteractionsMod.instance.Settings.DefaultConvertValue))
+                    if (CanUseExtraMode(pawn, CustomPrisonerInteractionsMod.Instance.Settings.DefaultConvertValue))
                     {
                         extraInteractionsTracker[pawn] =
-                            CustomPrisonerInteractionsMod.instance.Settings.DefaultConvertValue;
+                            CustomPrisonerInteractionsMod.Instance.Settings.DefaultConvertValue;
                     }
 
                     break;

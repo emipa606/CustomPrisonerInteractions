@@ -39,7 +39,6 @@ public static class Pawn_InteractionsTracker_TryInteractWith
                 {
                     CustomPrisonerInteractions.InteractionModeField.SetValue(recipient.guest,
                         PrisonerInteractionModeDefOf.ReduceResistance);
-                    //recipient.guest.interactionMode = PrisonerInteractionModeDefOf.ReduceResistance;
                 }
 
                 break;
@@ -49,7 +48,6 @@ public static class Pawn_InteractionsTracker_TryInteractWith
                 {
                     CustomPrisonerInteractions.InteractionModeField.SetValue(recipient.guest,
                         PrisonerInteractionModeDefOf.ReduceWill);
-                    //recipient.guest.interactionMode = PrisonerInteractionModeDefOf.ReduceWill;
                 }
 
                 break;
@@ -72,7 +70,6 @@ public static class Pawn_InteractionsTracker_TryInteractWith
             recipient.guest.ExclusiveInteractionMode == PrisonerInteractionModeDefOf.ReduceWill)
         {
             CustomPrisonerInteractions.InteractionModeField.SetValue(recipient.guest, __state);
-            //recipient.guest.interactionMode = __state;
         }
     }
 }

@@ -5,8 +5,7 @@ namespace CustomPrisonerInteractions;
 
 public class ExtraInteractionsTracker(Map map) : MapComponent(map)
 {
-    private Dictionary<Pawn, CustomPrisonerInteractions.ExtraMode> extraInteractions =
-        new Dictionary<Pawn, CustomPrisonerInteractions.ExtraMode>();
+    private Dictionary<Pawn, CustomPrisonerInteractions.ExtraMode> extraInteractions = new();
 
     private List<Pawn> extraInteractionsKeys;
     private List<CustomPrisonerInteractions.ExtraMode> extraInteractionsValues;

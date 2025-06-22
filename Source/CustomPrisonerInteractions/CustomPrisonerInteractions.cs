@@ -30,18 +30,17 @@ public static class CustomPrisonerInteractions
 
     public static readonly FieldInfo InteractionModeField;
 
-    private static readonly Dictionary<Map, ExtraInteractionsTracker> ExtraInteractionsTrackers =
-        new Dictionary<Map, ExtraInteractionsTracker>();
+    private static readonly Dictionary<Map, ExtraInteractionsTracker> extraInteractionsTrackers = new();
 
     private static readonly MethodInfo isStudiableMethod = AccessTools.Method(typeof(ITab_Pawn_Visitor), "IsStudiable");
 
     private static readonly MethodInfo colonyHasAnyBloodfeederMethod =
         AccessTools.Method(typeof(ITab_Pawn_Visitor), "ColonyHasAnyBloodfeeder");
 
-    public static Pawn pawnWithIdeologyCrisis = null;
+    public static Pawn PawnWithIdeologyCrisis = null;
 
-    public static readonly Dictionary<ExtraMode, PrisonerInteractionModeDef> ModeDictionary =
-        new Dictionary<ExtraMode, PrisonerInteractionModeDef>
+    private static readonly Dictionary<ExtraMode, PrisonerInteractionModeDef> modeDictionary =
+        new()
         {
             [ExtraMode.Kill] = PrisonerInteractionModeDefOf.Execution,
             [ExtraMode.Release] = PrisonerInteractionModeDefOf.Release,
@@ -63,16 +62,12 @@ public static class CustomPrisonerInteractions
         var harmony = new Harmony("Mlie.CustomPrisonerInteractions");
         InteractionModeField = AccessTools.Field(typeof(Pawn_GuestTracker), "interactionMode");
         harmony.PatchAll(Assembly.GetExecutingAssembly());
-        if (CustomPrisonerInteractionsMod.instance.Settings.DefaultNewValue == null)
-        {
-            CustomPrisonerInteractionsMod.instance.Settings.DefaultNewValue =
-                PrisonerInteractionModeDefOf.MaintainOnly;
-        }
+        CustomPrisonerInteractionsMod.Instance.Settings.DefaultNewValue ??= PrisonerInteractionModeDefOf.MaintainOnly;
     }
 
     public static bool CanUseExtraMode(Pawn pawn, ExtraMode mode)
     {
-        return !ModeDictionary.ContainsKey(mode) || CanUsePrisonerInteractionMode(pawn, ModeDictionary[mode]);
+        return !modeDictionary.ContainsKey(mode) || CanUsePrisonerInteractionMode(pawn, modeDictionary[mode]);
     }
 
     public static bool CanUsePrisonerInteractionMode(Pawn pawn, PrisonerInteractionModeDef mode)
@@ -88,7 +83,7 @@ public static class CustomPrisonerInteractions
         }
 
         if (mode.hideIfNoBloodfeeders && pawn.MapHeld != null &&
-            (bool)colonyHasAnyBloodfeederMethod.Invoke(null, [pawn.MapHeld]) == false)
+            !(bool)colonyHasAnyBloodfeederMethod.Invoke(null, [pawn.MapHeld]))
         {
             return false;
         }
@@ -109,7 +104,7 @@ public static class CustomPrisonerInteractions
             return true;
         }
 
-        if (mode.hideIfNotStudiableAsPrisoner && (bool)isStudiableMethod.Invoke(null, [pawn]) == false)
+        if (mode.hideIfNotStudiableAsPrisoner && !(bool)isStudiableMethod.Invoke(null, [pawn]))
         {
             return false;
         }
@@ -126,9 +121,9 @@ public static class CustomPrisonerInteractions
 
         ExtraInteractionsTracker value;
 
-        if (!ExtraInteractionsTrackers.TryGetValue(map, out var tracker))
+        if (!extraInteractionsTrackers.TryGetValue(map, out var tracker))
         {
-            value = ExtraInteractionsTrackers[map] = map.GetComponent<ExtraInteractionsTracker>();
+            value = extraInteractionsTrackers[map] = map.GetComponent<ExtraInteractionsTracker>();
         }
         else
         {

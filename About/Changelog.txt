@@ -1,5 +1,8 @@
 # Changelog for CustomPrisonerInteractions
 
+1.6.0 - Mod updated for 1.6 and passed autotests
+
+
 1.5.8 - Extra release-action can now be set to None when the default action has a value set
 
 
