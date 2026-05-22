@@ -12,7 +12,7 @@ public class ExtraInteractionsTracker(Map map) : MapComponent(map)
 
     public CustomPrisonerInteractions.ExtraMode this[Pawn prisoner]
     {
-        get => extraInteractions[prisoner];
+        get => extraInteractions.GetValueOrDefault(prisoner, CustomPrisonerInteractions.ExtraMode.Undefined);
         set => extraInteractions[prisoner] = value;
     }
 

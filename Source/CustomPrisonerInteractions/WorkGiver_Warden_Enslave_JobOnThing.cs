@@ -30,7 +30,8 @@ public static class WorkGiver_Warden_Enslave_JobOnThing
 
         __state = pawn2.guest.ExclusiveInteractionMode;
 
-        if (extraInteractionsTracker[pawn2] == CustomPrisonerInteractions.ExtraMode.ReduceWillThenEnslave)
+        if (extraInteractionsTracker[pawn2] == CustomPrisonerInteractions.ExtraMode.ReduceWillThenEnslave &&
+            pawn2.guest.ExclusiveInteractionMode == PrisonerInteractionModeDefOf.Enslave)
         {
             CustomPrisonerInteractions.InteractionModeField.SetValue(pawn2.guest,
                 PrisonerInteractionModeDefOf.ReduceWill);

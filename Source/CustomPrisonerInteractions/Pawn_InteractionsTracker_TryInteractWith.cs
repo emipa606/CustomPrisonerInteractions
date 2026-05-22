@@ -42,7 +42,6 @@ public static class Pawn_InteractionsTracker_TryInteractWith
                 }
 
                 break;
-            case CustomPrisonerInteractions.ExtraMode.ReduceWillThenEnslave:
             case CustomPrisonerInteractions.ExtraMode.ReduceWill:
                 if (recipient.guest.will > 0)
                 {

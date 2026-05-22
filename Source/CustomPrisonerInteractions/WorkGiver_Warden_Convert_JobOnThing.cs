@@ -43,7 +43,6 @@ public static class WorkGiver_Warden_Convert_JobOnThing
                 }
 
                 break;
-            case CustomPrisonerInteractions.ExtraMode.ReduceWillThenEnslave:
             case CustomPrisonerInteractions.ExtraMode.ReduceWill:
                 if (pawn2.guest.will > 0)
                 {
