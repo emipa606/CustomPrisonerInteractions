@@ -121,8 +121,16 @@ public class ITab_Pawn_Visitor_FillTab
             return;
         }
 
-        if (__state.Item2 != pawn.guest.ExclusiveInteractionMode.defName && !extraInteractionsTracker.Has(pawn) ||
-            extraInteractionsTracker[pawn] == Undefined)
+        if (!extraInteractionsTracker.Has(pawn))
+        {
+            TryMigrateExtraInteraction(pawn, out _);
+        }
+
+        var hasExtraInteraction = extraInteractionsTracker.Has(pawn);
+        var currentExtraInterraction = hasExtraInteraction ? extraInteractionsTracker[pawn] : Undefined;
+
+        if (__state.Item2 != pawn.guest.ExclusiveInteractionMode.defName && !hasExtraInteraction ||
+            currentExtraInterraction == Undefined)
         {
             switch (pawn.guest.ExclusiveInteractionMode.defName)
             {
@@ -132,6 +140,7 @@ public class ITab_Pawn_Visitor_FillTab
                     {
                         extraInteractionsTracker[pawn] =
                             CustomPrisonerInteractionsMod.Instance.Settings.DefaultReleaseValue;
+                        currentExtraInterraction = extraInteractionsTracker[pawn];
                     }
 
                     break;
@@ -141,6 +150,7 @@ public class ITab_Pawn_Visitor_FillTab
                     {
                         extraInteractionsTracker[pawn] =
                             CustomPrisonerInteractionsMod.Instance.Settings.DefaultConvertValue;
+                        currentExtraInterraction = extraInteractionsTracker[pawn];
                     }
 
                     break;
@@ -159,20 +169,13 @@ public class ITab_Pawn_Visitor_FillTab
 
         Widgets.Label(buttonArea, "CPI.options".Translate());
 
-        var currentExtraInterraction = Undefined;
-
-        if (extraInteractionsTracker.Has(pawn))
-        {
-            currentExtraInterraction = extraInteractionsTracker[pawn];
-        }
-
         string currentExtraInterractionText = getExtraInterractionExplanation(currentExtraInterraction);
 
         TooltipHandler.TipRegion(buttonArea.RightPart(0.7f), currentExtraInterractionText);
 
         if (currentExtraInterractionText.Length > buttonText + 3)
         {
-            currentExtraInterractionText = $"{currentExtraInterractionText.Substring(0, buttonText)}...";
+            currentExtraInterractionText = $"{currentExtraInterractionText[..buttonText]}...";
         }
 
         if (Widgets.ButtonText(buttonArea.RightPart(0.7f), currentExtraInterractionText))

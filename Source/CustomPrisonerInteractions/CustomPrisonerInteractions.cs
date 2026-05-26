@@ -133,6 +133,40 @@ public static class CustomPrisonerInteractions
         return value;
     }
 
+    internal static bool TryMigrateExtraInteraction(Pawn pawn, out ExtraMode mode)
+    {
+        mode = ExtraMode.Undefined;
+
+        var currentTracker = pawn?.Map?.GetExtraInteractionsTracker();
+        if (currentTracker == null)
+        {
+            return false;
+        }
+
+        if (currentTracker.TryGet(pawn, out mode))
+        {
+            return true;
+        }
+
+        foreach (var mapAndTracker in extraInteractionsTrackers)
+        {
+            if (mapAndTracker.Key == pawn.Map || mapAndTracker.Value == null)
+            {
+                continue;
+            }
+
+            if (!mapAndTracker.Value.TryTake(pawn, out mode))
+            {
+                continue;
+            }
+
+            currentTracker[pawn] = mode;
+            return true;
+        }
+
+        return false;
+    }
+
     internal static TaggedString getExtraInterractionExplanation(ExtraMode extraMode)
     {
         switch (extraMode)

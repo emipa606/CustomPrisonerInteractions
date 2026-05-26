@@ -1,5 +1,8 @@
 # Changelog for CustomPrisonerInteractions
 
+1.6.2 - Moving prisoners in gravships should now work correctly
+
+
 1.6.1 - Unwaivering prisoners and the option Reduce will before, Enslave after should work better
 
 

@@ -21,6 +21,22 @@ public class ExtraInteractionsTracker(Map map) : MapComponent(map)
         return extraInteractions.ContainsKey(prisoner);
     }
 
+    public bool TryGet(Pawn prisoner, out CustomPrisonerInteractions.ExtraMode mode)
+    {
+        return extraInteractions.TryGetValue(prisoner, out mode);
+    }
+
+    public bool TryTake(Pawn prisoner, out CustomPrisonerInteractions.ExtraMode mode)
+    {
+        if (extraInteractions.Remove(prisoner, out mode))
+        {
+            return true;
+        }
+
+        mode = CustomPrisonerInteractions.ExtraMode.Undefined;
+        return false;
+    }
+
     public override void ExposeData()
     {
         base.ExposeData();
