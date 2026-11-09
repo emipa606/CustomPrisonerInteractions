@@ -83,7 +83,7 @@ public static class CustomPrisonerInteractions
         }
 
         if (mode.hideIfNoBloodfeeders && pawn.MapHeld != null &&
-            !(bool)colonyHasAnyBloodfeederMethod.Invoke(null, [pawn.MapHeld]))
+            !(bool)(colonyHasAnyBloodfeederMethod.Invoke(null, [pawn.MapHeld]) ?? false))
         {
             return false;
         }
@@ -104,7 +104,7 @@ public static class CustomPrisonerInteractions
             return true;
         }
 
-        if (mode.hideIfNotStudiableAsPrisoner && !(bool)isStudiableMethod.Invoke(null, [pawn]))
+        if (mode.hideIfNotStudiableAsPrisoner && !(bool)(isStudiableMethod.Invoke(null, [pawn]) ?? false))
         {
             return false;
         }
@@ -150,7 +150,7 @@ public static class CustomPrisonerInteractions
 
         foreach (var mapAndTracker in extraInteractionsTrackers)
         {
-            if (mapAndTracker.Key == pawn.Map || mapAndTracker.Value == null)
+            if (mapAndTracker.Key == pawn?.Map || mapAndTracker.Value == null)
             {
                 continue;
             }

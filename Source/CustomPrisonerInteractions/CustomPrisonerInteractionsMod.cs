@@ -18,11 +18,6 @@ internal class CustomPrisonerInteractionsMod : Mod
     private static string currentVersion;
 
     /// <summary>
-    ///     The private settings
-    /// </summary>
-    private CustomPrisonerInteractionsSettings settings;
-
-    /// <summary>
     ///     Constructor
     /// </summary>
     /// <param name="content"></param>
@@ -41,9 +36,9 @@ internal class CustomPrisonerInteractionsMod : Mod
     {
         get
         {
-            settings ??= GetSettings<CustomPrisonerInteractionsSettings>();
+            field ??= GetSettings<CustomPrisonerInteractionsSettings>();
 
-            return settings;
+            return field;
         }
     }
 
@@ -60,11 +55,11 @@ internal class CustomPrisonerInteractionsMod : Mod
     ///     The settings-window
     ///     For more info: https://rimworldwiki.com/wiki/Modding_Tutorials/ModSettings
     /// </summary>
-    /// <param name="rect"></param>
-    public override void DoSettingsWindowContents(Rect rect)
+    /// <param name="inRect"></param>
+    public override void DoSettingsWindowContents(Rect inRect)
     {
         var listingStandard = new Listing_Standard();
-        listingStandard.Begin(rect);
+        listingStandard.Begin(inRect);
         listingStandard.Gap();
         listingStandard.Label(
             "CPI.defaultfornew".Translate(Settings.DefaultNewValue.LabelCap));

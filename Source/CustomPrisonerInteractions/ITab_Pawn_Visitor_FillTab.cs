@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using HarmonyLib;
 using RimWorld;
 using UnityEngine;
@@ -11,7 +12,7 @@ namespace CustomPrisonerInteractions;
 
 [HarmonyPatch(typeof(ITab_Pawn_Visitor), "FillTab")]
 [HarmonyAfter("Harmony_PrisonLabor")]
-public class ITab_Pawn_Visitor_FillTab
+public static class ITab_Pawn_Visitor_FillTab
 {
     private const float buttonSpace = 34f;
     private const float margin = 10f;
@@ -56,14 +57,11 @@ public class ITab_Pawn_Visitor_FillTab
                              ReleaseWhenNotGuilty,
                              ReleaseWhenAbleToWalk,
                              ReleaseWhenHealthy
-                         })
+                         }.Where(extraMode => CanUseExtraMode(pawn, extraMode)))
                 {
-                    if (CanUseExtraMode(pawn, extraMode))
-                    {
-                        __state.Item1.Add(new FloatMenuOption(getExtraInterractionExplanation(extraMode),
-                            delegate { extraInteractionsTracker[pawn] = extraMode; },
-                            MenuOptionPriority.Default, null, null, 29f));
-                    }
+                    __state.Item1.Add(new FloatMenuOption(getExtraInterractionExplanation(extraMode),
+                        delegate { extraInteractionsTracker[pawn] = extraMode; },
+                        MenuOptionPriority.Default, null, null, 29f));
                 }
 
                 break;
@@ -86,14 +84,11 @@ public class ITab_Pawn_Visitor_FillTab
                              ReduceResistanceThenRelease,
                              Kill,
                              ReduceResistanceThenKill
-                         })
+                         }.Where(extraMode => CanUseExtraMode(pawn, extraMode)))
                 {
-                    if (CanUseExtraMode(pawn, extraMode))
-                    {
-                        __state.Item1.Add(new FloatMenuOption(getExtraInterractionExplanation(extraMode),
-                            delegate { extraInteractionsTracker[pawn] = extraMode; },
-                            MenuOptionPriority.Default, null, null, 29f));
-                    }
+                    __state.Item1.Add(new FloatMenuOption(getExtraInterractionExplanation(extraMode),
+                        delegate { extraInteractionsTracker[pawn] = extraMode; },
+                        MenuOptionPriority.Default, null, null, 29f));
                 }
 
                 break;
